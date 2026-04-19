@@ -2,6 +2,8 @@
 
 This repository tracks a small set of text-based result snapshots so the latest experiment outputs are visible in git without checking in large binary volumes.
 
+For a browser-friendly landing page, open [index.html](index.html) or publish it via GitHub Pages.
+
 ## Sparse Reconstruction Metadata
 
 Files in `sparse_reconstruction_results/` contain per-subject reconstruction metadata for the current tracked runs:

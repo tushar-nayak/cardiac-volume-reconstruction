@@ -1,0 +1,281 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Interactive GitHub Pages landing page for cardiac 3D comparison viewers.">
+  <title>Cardiac Reconstruction Viewers</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #08111f;
+      --panel: rgba(11, 19, 34, 0.82);
+      --panel-strong: #0e1a2d;
+      --line: rgba(160, 184, 255, 0.16);
+      --text: #eaf0ff;
+      --muted: #9fb0d0;
+      --accent: #67e8f9;
+      --accent-2: #a78bfa;
+      --good: #4ade80;
+      --shadow: 0 24px 60px rgba(0, 0, 0, 0.35);
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(103, 232, 249, 0.14), transparent 30%),
+        radial-gradient(circle at top right, rgba(167, 139, 250, 0.12), transparent 32%),
+        linear-gradient(180deg, #060b14 0%, var(--bg) 100%);
+    }
+
+    .wrap {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 48px 20px 64px;
+    }
+
+    .hero {
+      display: grid;
+      gap: 16px;
+      padding: 28px;
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      background: linear-gradient(180deg, rgba(16, 26, 44, 0.92), rgba(10, 16, 28, 0.88));
+      box-shadow: var(--shadow);
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      width: fit-content;
+      padding: 6px 10px;
+      border: 1px solid rgba(103, 232, 249, 0.24);
+      border-radius: 999px;
+      color: var(--accent);
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      background: rgba(103, 232, 249, 0.08);
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(2rem, 5vw, 4rem);
+      line-height: 1.02;
+      letter-spacing: -0.04em;
+    }
+
+    .lede {
+      max-width: 76ch;
+      margin: 0;
+      color: var(--muted);
+      font-size: 1.05rem;
+      line-height: 1.7;
+    }
+
+    .meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .chip {
+      padding: 8px 12px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.03);
+    }
+
+    .section {
+      margin-top: 28px;
+    }
+
+    .section h2 {
+      margin: 0 0 12px;
+      font-size: 1.15rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: #c8d3ee;
+    }
+
+    .grid {
+      display: grid;
+      gap: 16px;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    }
+
+    .card {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      padding: 18px;
+      border-radius: 20px;
+      border: 1px solid var(--line);
+      background: linear-gradient(180deg, rgba(14, 26, 45, 0.92), rgba(9, 15, 27, 0.88));
+      box-shadow: var(--shadow);
+    }
+
+    .card h3 {
+      margin: 0;
+      font-size: 1.05rem;
+    }
+
+    .card p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.65;
+      font-size: 0.95rem;
+    }
+
+    .buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: auto;
+    }
+
+    a.button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 10px 14px;
+      border-radius: 12px;
+      text-decoration: none;
+      color: var(--text);
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.04);
+      transition: transform 140ms ease, border-color 140ms ease, background 140ms ease;
+    }
+
+    a.button:hover {
+      transform: translateY(-1px);
+      border-color: rgba(103, 232, 249, 0.35);
+      background: rgba(103, 232, 249, 0.08);
+    }
+
+    a.primary {
+      color: #041018;
+      background: linear-gradient(135deg, var(--accent), #b7f6ff);
+      border-color: transparent;
+      font-weight: 700;
+    }
+
+    a.primary:hover {
+      background: linear-gradient(135deg, #7ee8f4, #c7fbff);
+    }
+
+    .footer {
+      margin-top: 28px;
+      color: var(--muted);
+      font-size: 0.92rem;
+      line-height: 1.6;
+    }
+
+    code {
+      padding: 0.15rem 0.35rem;
+      border-radius: 6px;
+      background: rgba(255, 255, 255, 0.08);
+      color: #dbeafe;
+    }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <section class="hero">
+      <div class="eyebrow">GitHub Pages Viewer</div>
+      <h1>Cardiac Reconstruction 3D Comparison Viewers</h1>
+      <p class="lede">
+        Open the generated reconstruction viewers directly in the browser. Each subject has a side-by-side comparison
+        and an overlay view that compare the reconstructed cardiac volume against the original segmentation.
+      </p>
+      <div class="meta">
+        <span class="chip">Comparison HTML</span>
+        <span class="chip">Overlay HTML</span>
+        <span class="chip">Relative links for GitHub Pages</span>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Tracked Viewers</h2>
+      <div class="grid" id="viewer-grid"></div>
+    </section>
+
+    <section class="section">
+      <h2>How To Use</h2>
+      <div class="card">
+        <p>
+          If this repository is published with GitHub Pages, this page can be the site landing page.
+          Click a subject below to open the comparison or overlay viewer in the browser.
+        </p>
+        <p>
+          The linked files live under <code>3d_comparison_viewers_v2/</code> and use relative paths, so they work
+          when hosted from the repo root.
+        </p>
+        <div class="buttons">
+          <a class="button primary" href="results_index.md">Open Results Index</a>
+          <a class="button" href="README.md">Open README</a>
+        </div>
+      </div>
+    </section>
+
+    <p class="footer">
+      Generated artifacts in <code>sparse_reconstruction_results/*.nii.gz</code> are intentionally not tracked.
+      This page only links to the HTML viewers and text metadata snapshots.
+    </p>
+  </main>
+
+  <script>
+    const viewers = [
+      {
+        subject: "MITEA_001_scan1_ED",
+        comparison: "3d_comparison_viewers_v2/MITEA_001_scan1_ED.nii_comparison.html",
+        overlay: "3d_comparison_viewers_v2/MITEA_001_scan1_ED.nii_overlay.html"
+      },
+      {
+        subject: "MITEA_001_scan1_ES",
+        comparison: "3d_comparison_viewers_v2/MITEA_001_scan1_ES.nii_comparison.html",
+        overlay: "3d_comparison_viewers_v2/MITEA_001_scan1_ES.nii_overlay.html"
+      },
+      {
+        subject: "MITEA_001_scan2_ED",
+        comparison: "3d_comparison_viewers_v2/MITEA_001_scan2_ED.nii_comparison.html",
+        overlay: "3d_comparison_viewers_v2/MITEA_001_scan2_ED.nii_overlay.html"
+      },
+      {
+        subject: "MITEA_001_scan2_ES",
+        comparison: "3d_comparison_viewers_v2/MITEA_001_scan2_ES.nii_comparison.html",
+        overlay: "3d_comparison_viewers_v2/MITEA_001_scan2_ES.nii_overlay.html"
+      },
+      {
+        subject: "MITEA_002_scan1_ED",
+        comparison: "3d_comparison_viewers_v2/MITEA_002_scan1_ED.nii_comparison.html",
+        overlay: "3d_comparison_viewers_v2/MITEA_002_scan1_ED.nii_overlay.html"
+      }
+    ];
+
+    const grid = document.getElementById("viewer-grid");
+
+    viewers.forEach((item) => {
+      const card = document.createElement("article");
+      card.className = "card";
+      card.innerHTML = `
+        <div class="eyebrow">Subject</div>
+        <h3>${item.subject}</h3>
+        <p>Open the comparison or overlay view for this tracked reconstruction snapshot.</p>
+        <div class="buttons">
+          <a class="button primary" href="${item.comparison}">Comparison</a>
+          <a class="button" href="${item.overlay}">Overlay</a>
+        </div>
+      `;
+      grid.appendChild(card);
+    });
+  </script>
+</body>
+</html>
