@@ -1,0 +1,14 @@
+torch
+numpy
+matplotlib
+nibabel
+scipy
+plotly
+scikit-image
+
+# Optional / experimental scripts
+wandb
+pandas
+seaborn
+h5py
+trimesh
