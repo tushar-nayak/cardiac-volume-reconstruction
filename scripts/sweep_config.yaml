@@ -1,0 +1,111 @@
+project: echo3d-mixed-sweep2
+name: mixed-mode-ablation-full
+description: >
+  Extensive ablation of mixed mode: global training + per-scan refinement.
+  Logs all losses, all 2D/3D metrics, per-scan and aggregated results.
+  FIXED: All log_uniform -> log_uniform_values for correct parameter ranges.
+
+program: mywandb.py
+method: bayes
+
+metric:
+  name: mixed/dice_3d_mean
+  goal: maximize
+
+parameters:
+  # ===== SEED =====
+  random_seed:
+    distribution: int_uniform
+    min: 1
+    max: 1000
+
+  # ===== ARCHITECTURE =====
+  hidden_dim:
+    values: [32, 48, 64, 96, 128]
+
+  num_inr_layers:
+    values: [3, 4, 5, 6]
+
+  # ===== GLOBAL TRAINING SCHEDULE =====
+  num_epochs:
+    values: [10, 15, 20, 30]
+
+  steps_per_epoch:
+    values: [100, 150, 200, 300, 400]
+
+  # ===== LEARNING RATES (FIXED: log_uniform_values) =====
+  learning_rate:
+    distribution: log_uniform_values
+    min: 1e-4
+    max: 1e-2
+
+  pose_learning_rate:
+    distribution: log_uniform_values
+    min: 1e-5
+    max: 1e-3
+
+  # ===== POSE BEHAVIOR =====
+  learn_pose:
+    values: [true, false]
+
+  pose_reg_weight:
+    distribution: log_uniform_values
+    min: 1e-5
+    max: 1e-1
+
+  # ===== MIXED REFINEMENT =====
+  mixed_refine_steps:
+    values: [50, 100, 200, 400, 800]
+
+  alternate_every:
+    values: [10, 20, 40]
+
+  # ===== VOLUMETRIC SUPERVISION =====
+  vol_supervision_weight:
+    distribution: uniform
+    min: 0.0
+    max: 2.0
+
+  vol_supervision_samples:
+    values: [2048, 4096, 8192, 16384]
+
+  # ===== REGULARIZATION =====
+  grid_resolution:
+    values: [48, 64, 96]
+
+  reg_every:
+    values: [1, 2, 4, 8]
+
+  # ===== PROJECTION / SAMPLING =====
+  proj_resolution:
+    values: [192, 224, 256]
+
+  proj_batch_size:
+    values: [32768, 65536, 131072]
+
+  num_views:
+    values: [2, 3, 4]
+
+  min_mask_pixels:
+    values: [50, 75, 100, 150]
+
+  slice_selection_strategy:
+    values: ["topk", "stratified"]
+
+  # ===== EVALUATION =====
+  eval_grid_resolution:
+    values: [96, 128]
+
+  mesh_threshold:
+    values: [0.4, 0.5, 0.6]
+
+  # ===== DATASET FILTERING =====
+  subject_category_mode:
+    values: ["all", "healthy_only"]
+
+  frame_filter:
+    values: ["ES", "ED"]
+
+  # ===== MISC =====
+  save_nifti:
+    values: [false, true]

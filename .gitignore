@@ -1,0 +1,49 @@
+# Python caches
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# OS metadata
+.DS_Store
+Thumbs.db
+
+# Dataset and large medical volumes
+cap-mitea/
+*.nii
+*.nii.gz
+
+# Generated checkpoints and reconstructions
+checkpoints/
+checkpoints2/
+checkpoints3/
+checkpoints5/
+ablation_results/
+ablation_results_old/
+sparse_reconstruction_results/
+sparse_reconstruction_results_old/
+3d_comparison_viewers_v2/
+3d_comparison_viewersold/
+html_viz/
+wandb/
+
+# Run outputs and derived artifacts
+combined_output.txt
+combined_python_files.txt
+*.wandb
+
+# Archives and packaged exports
+archive/
+*.zip
+*.tar
+*.gz
+*.7z
+
+# Local editor and IDE state
+.vscode/
+.idea/
