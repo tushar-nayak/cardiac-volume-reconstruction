@@ -114,6 +114,15 @@ The repository creates several on-disk result folders:
 
 These paths are ignored by git.
 
+## Versioned Results
+
+Text-based result snapshots from the current runs are kept in git so the documented outputs stay visible:
+
+- `sparse_reconstruction_results/*.json` for per-subject reconstruction metadata
+- `3d_comparison_viewers_v2/*.html` for interactive comparison viewers
+
+The corresponding NIfTI volumes remain untracked because they are large binary artifacts.
+
 ## Notes on the codebase
 
 - The project went through several iterations; the active scripts in `src/` are the ones to use first.
