@@ -8,6 +8,7 @@ Start with:
 - [Recommended commands](#recommended-commands)
 - [Dataset layout](#dataset-layout)
 - [Usage guide](docs/USAGE.md)
+- [Results index](results_index.md)
 
 ## What’s here
 
@@ -122,6 +123,8 @@ Text-based result snapshots from the current runs are kept in git so the documen
 - `3d_comparison_viewers_v2/*.html` for interactive comparison viewers
 
 The corresponding NIfTI volumes remain untracked because they are large binary artifacts.
+
+See [results_index.md](results_index.md) for the current tracked snapshot list.
 
 ## Notes on the codebase
 
