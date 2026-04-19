@@ -1,0 +1,22 @@
+name: cardiac-3d
+channels:
+  - pytorch
+  - conda-forge
+dependencies:
+  - python=3.11
+  - pip
+  - pytorch
+  - torchvision
+  - torchaudio
+  - numpy
+  - matplotlib
+  - nibabel
+  - scipy
+  - plotly
+  - scikit-image
+  - pandas
+  - seaborn
+  - h5py
+  - pip:
+      - wandb
+      - trimesh
