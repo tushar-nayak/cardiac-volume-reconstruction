@@ -9,6 +9,7 @@ Start with:
 - [Dataset layout](#dataset-layout)
 - [Usage guide](docs/USAGE.md)
 - [Results index](results_index.md)
+- [GitHub Pages viewer](index.html)
 
 ## What’s here
 
@@ -125,6 +126,7 @@ Text-based result snapshots from the current runs are kept in git so the documen
 The corresponding NIfTI volumes remain untracked because they are large binary artifacts.
 
 See [results_index.md](results_index.md) for the current tracked snapshot list.
+If GitHub Pages is enabled for this repo, the landing page is [index.html](index.html).
 
 ## Notes on the codebase
 
