@@ -1,0 +1,25 @@
+{
+    "subject_id": "MITEA_001_scan1_ES.nii",
+    "grid_shape": [
+        128,
+        128,
+        128
+    ],
+    "grid_stats": {
+        "min": 0.12967340648174286,
+        "max": 0.4481770992279053,
+        "mean": 0.2955191731452942,
+        "std": 0.04891635850071907,
+        "median": 0.29800987243652344
+    },
+    "num_vertices": 263198,
+    "num_faces": 521404,
+    "config": {
+        "hidden_dim": 32,
+        "num_inr_layers": 2,
+        "learning_rate": 0.0001,
+        "num_views": 3,
+        "num_optimization_steps": 1000,
+        "grid_resolution": 128
+    }
+}
