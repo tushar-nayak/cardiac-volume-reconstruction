@@ -1,24 +1,170 @@
 # Python caches
 __pycache__/
-*.pyc
-*.pyo
+*.py[cod]
 *.pyd
+*.pyo
+*$py.class
 
-# Virtual environments
+# C extensions
+*.so
+
+# Distribution / packaging
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# PyInstaller
+*.manifest
+*.spec
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.nox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.py.cover
+.hypothesis/
+.pytest_cache/
+cover/
+
+# Translations
+*.mo
+*.pot
+
+# Django stuff
+*.log
+local_settings.py
+db.sqlite3
+db.sqlite3-journal
+
+# Flask stuff
+instance/
+.webassets-cache
+
+# Scrapy stuff
+.scrapy/
+
+# Sphinx documentation
+docs/_build/
+
+# PyBuilder
+.pybuilder/
+target/
+
+# Jupyter Notebook
+.ipynb_checkpoints/
+
+# IPython
+profile_default/
+ipython_config.py
+
+# Package managers and environments
 .venv/
 venv/
 env/
+ENV/
+env.bak/
+venv.bak/
+.env
+.envrc
+.pdm-python
+.pdm-build/
+.pixi
+__pypackages__/
 
-# OS metadata
+# Dependency lockfiles
+#Pipfile.lock
+#uv.lock
+#poetry.lock
+#poetry.toml
+#pdm.lock
+#pdm.toml
+
+# Celery stuff
+celerybeat-schedule
+celerybeat.pid
+
+# SageMath parsed files
+*.sage.py
+
+# Spyder project settings
+.spyderproject
+.spyproject
+
+# Rope project settings
+.ropeproject
+
+# mkdocs documentation
+/site
+
+# mypy
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# Pyre type checker
+.pyre/
+
+# pytype static type analyzer
+.pytype/
+
+# Cython debug symbols
+cython_debug/
+
+# JetBrains
+#.idea/
+
+# Abstra
+.abstra/
+
+# VS Code
+#.vscode/
+
+# Ruff
+.ruff_cache/
+
+# PyPI configuration file
+.pypirc
+
+# Cursor
+.cursorignore
+.cursorindexingignore
+
+# Marimo
+marimo/_static/
+marimo/_lsp/
+__marimo__/
+
+# Project-specific data and outputs
 .DS_Store
 Thumbs.db
-
-# Dataset and large medical volumes
 cap-mitea/
 *.nii
 *.nii.gz
-
-# Generated checkpoints and reconstructions
 checkpoints/
 checkpoints2/
 checkpoints3/
@@ -31,19 +177,13 @@ sparse_reconstruction_results_old/
 3d_comparison_viewersold/
 html_viz/
 wandb/
-
-# Run outputs and derived artifacts
 combined_output.txt
 combined_python_files.txt
 *.wandb
-
-# Archives and packaged exports
 archive/
 *.zip
 *.tar
 *.gz
 *.7z
-
-# Local editor and IDE state
 .vscode/
 .idea/
