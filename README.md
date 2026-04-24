@@ -99,7 +99,7 @@ The active code expects the MITEA dataset to be organized as:
 By default, `src/minimal_starter_5.py` points to:
 
 ```python
-Path("/home/sofa/host_dir/cap-mitea/mitea")
+Path(__file__).resolve().parents[1] / "cap-mitea" / "mitea"
 ```
 
 If your dataset lives elsewhere, update `CONFIG['data_path']` in `src/minimal_starter_5.py`. Most other scripts import that same config.

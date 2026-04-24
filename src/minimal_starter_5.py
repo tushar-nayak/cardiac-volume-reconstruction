@@ -28,7 +28,7 @@ import traceback
 
 CONFIG = {
     'device': 'cuda' if torch.cuda.is_available() else 'cpu',
-    'data_path': Path("/home/sofa/host_dir/cap-mitea/mitea"),
+    'data_path': Path(__file__).resolve().parents[1] / "cap-mitea" / "mitea",
     'checkpoint_path': Path('./checkpoints'),
     'num_views': 3,
     'image_size': 256,

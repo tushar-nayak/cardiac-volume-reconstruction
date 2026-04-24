@@ -3,8 +3,8 @@
 Quick MITEA dataset inspector.
 
 - Finds all image / label pairs under:
-    /home/sofa/host_dir/cap-mitea/mitea/images
-    /home/sofa/host_dir/cap-mitea/mitea/labels
+    <repo>/cap-mitea/mitea/images
+    <repo>/cap-mitea/mitea/labels
 
 - For each scan, prints:
     * subject ID
@@ -25,7 +25,7 @@ import numpy as np
 # ---------------------------------------------------------------------
 # CONFIG: adjust if your path is different
 # ---------------------------------------------------------------------
-DATA_PATH = Path("/home/sofa/host_dir/cap-mitea/mitea")
+DATA_PATH = Path(__file__).resolve().parents[1] / "cap-mitea" / "mitea"
 IMAGES_DIR = DATA_PATH / "images"
 LABELS_DIR = DATA_PATH / "labels"
 

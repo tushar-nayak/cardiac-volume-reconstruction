@@ -37,7 +37,7 @@ The active scripts expect:
 The default path used by `src/minimal_starter_5.py` is:
 
 ```python
-Path("/home/sofa/host_dir/cap-mitea/mitea")
+Path(__file__).resolve().parents[1] / "cap-mitea" / "mitea"
 ```
 
 If your dataset lives elsewhere, change `CONFIG['data_path']` in `src/minimal_starter_5.py`.
