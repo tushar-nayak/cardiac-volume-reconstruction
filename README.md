@@ -8,9 +8,9 @@ Start with:
 - [Recommended commands](#recommended-commands)
 - [Project structure](#project-structure)
 - [Dataset layout](#dataset-layout)
+- [Reproducibility](REPRODUCIBILITY.md)
 - [Usage guide](docs/USAGE.md)
 - [Results index](results_index.md)
-- [GitHub Pages viewer](index.html)
 
 ## What’s here
 
@@ -33,7 +33,7 @@ old/                      Archived iterations and development history
 docs/                     Usage notes
 report.md                 Final write-up with the reported results
 results_index.md          Tracked artifact index for the documented outputs
-index.html                Browser-friendly landing page for the tracked results
+REPRODUCIBILITY.md        Exact commands / config needed to rerun the reported results
 ```
 
 The new package layer gives you a clean way to run the project without changing the original scripts:
@@ -150,7 +150,7 @@ Text-based result snapshots from the current runs are kept in git so the documen
 The corresponding NIfTI volumes remain untracked because they are large binary artifacts.
 
 See [results_index.md](results_index.md) for the current tracked snapshot list.
-If GitHub Pages is enabled for this repo, the landing page is [index.html](index.html).
+The GitHub Pages site is published from the `gh-pages` branch, while `main` stays source-only.
 
 ## Notes on the codebase
 

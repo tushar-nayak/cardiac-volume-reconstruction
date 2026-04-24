@@ -16,12 +16,19 @@ from pathlib import Path
 import os
 import traceback
 
+DATA_PATH = Path(
+    os.getenv(
+        "CARDIAC_DATA_PATH",
+        str(Path(__file__).resolve().parents[1] / "cap-mitea" / "mitea"),
+    )
+).expanduser()
+
 # ==========================
 # CONFIG
 # ==========================
 CONFIG = {
     'device': 'cuda' if torch.cuda.is_available() else 'cpu',
-    'data_path': Path("/home/sofa/host_dir/cap-mitea/mitea"),
+    'data_path': DATA_PATH,
     'checkpoint_path': Path('./checkpoints'),
     'num_views': 3,
     'image_size': 256,

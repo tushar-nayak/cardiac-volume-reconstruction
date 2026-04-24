@@ -17,6 +17,7 @@ Quick MITEA dataset inspector.
 """
 
 from collections import defaultdict
+import os
 from pathlib import Path
 
 import nibabel as nib
@@ -25,7 +26,12 @@ import numpy as np
 # ---------------------------------------------------------------------
 # CONFIG: adjust if your path is different
 # ---------------------------------------------------------------------
-DATA_PATH = Path(__file__).resolve().parents[1] / "cap-mitea" / "mitea"
+DATA_PATH = Path(
+    os.environ.get(
+        "CARDIAC_DATA_PATH",
+        str(Path(__file__).resolve().parents[1] / "cap-mitea" / "mitea"),
+    )
+).expanduser()
 IMAGES_DIR = DATA_PATH / "images"
 LABELS_DIR = DATA_PATH / "labels"
 

@@ -39,6 +39,13 @@ import nibabel as nib
 import plotly.graph_objects as go
 from plotly.subplots import make_subplots
 
+DATA_PATH = Path(
+    os.getenv(
+        "CARDIAC_DATA_PATH",
+        str(Path(__file__).resolve().parents[1] / "cap-mitea" / "mitea"),
+    )
+).expanduser()
+
 # ----------------------------
 # CONFIG
 # ----------------------------
@@ -47,7 +54,7 @@ CONFIG: Dict = {
     "device": "cuda" if torch.cuda.is_available() else "cpu",
 
     # data paths
-    "data_path": Path("/home/sofa/host_dir/cap-mitea/mitea"),
+    "data_path": DATA_PATH,
     "checkpoint_path": Path("./checkpoints"),
 
     # dataset control

@@ -22,6 +22,12 @@ pip install -r requirements.txt
 If you need a specific CUDA build of PyTorch, install that first and then install the rest of the packages.
 The Conda file uses the `pytorch` channel for the core torch packages.
 
+If you want to override the dataset location without editing source, set:
+
+```bash
+export CARDIAC_DATA_PATH=/path/to/mitea
+```
+
 ## 2. Prepare the data
 
 The active scripts expect:
@@ -41,6 +47,7 @@ Path(__file__).resolve().parents[1] / "cap-mitea" / "mitea"
 ```
 
 If your dataset lives elsewhere, change `CONFIG['data_path']` in `src/minimal_starter_5.py`.
+Setting `CARDIAC_DATA_PATH` is preferred because it leaves the source tree unchanged.
 
 ## 3. Run the scripts
 

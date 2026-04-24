@@ -28,7 +28,13 @@ import traceback
 
 CONFIG = {
     'device': 'cuda' if torch.cuda.is_available() else 'cpu',
-    'data_path': Path(__file__).resolve().parents[1] / "cap-mitea" / "mitea",
+    # Allow reproducible overrides without editing the source tree.
+    'data_path': Path(
+        os.environ.get(
+            "CARDIAC_DATA_PATH",
+            str(Path(__file__).resolve().parents[1] / "cap-mitea" / "mitea"),
+        )
+    ).expanduser(),
     'checkpoint_path': Path('./checkpoints'),
     'num_views': 3,
     'image_size': 256,

@@ -51,6 +51,7 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 from datetime import datetime
 from pathlib import Path
 from typing import Dict, List, Tuple, Optional, Any
+import os
 
 import nibabel as nib
 import numpy as np
@@ -61,6 +62,13 @@ import torch.optim as optim
 from plotly.subplots import make_subplots
 import plotly.graph_objects as go
 
+DATA_PATH = Path(
+    os.getenv(
+        "CARDIAC_DATA_PATH",
+        str(Path(__file__).resolve().parents[1] / "cap-mitea" / "mitea"),
+    )
+).expanduser()
+
 # ============================================================
 # CONFIG
 # ============================================================
@@ -69,7 +77,7 @@ CONFIG: Dict = {
     "device": "cuda" if torch.cuda.is_available() else "cpu",
 
     # data paths
-    "data_path": Path("/home/sofa/host_dir/cap-mitea/mitea"),
+    "data_path": DATA_PATH,
     "checkpoint_path": Path("./checkpoints"),
     "html_output_path": Path("./checkpoints/html_visualizations"),
 

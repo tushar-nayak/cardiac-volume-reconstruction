@@ -2,7 +2,7 @@
 
 This repository tracks a small set of text-based result snapshots so the latest experiment outputs are visible in git without checking in large binary volumes.
 
-For a browser-friendly landing page, open [index.html](index.html) or publish it via GitHub Pages.
+For a browser-friendly landing page, switch to the `gh-pages` branch or the published GitHub Pages site.
 
 ## Reported Headline Results
 
@@ -54,7 +54,7 @@ Open the HTML files in a browser to inspect the reconstructed surfaces and overl
 
 ## Featured Visualization Set
 
-The GitHub Pages landing page highlights the following viewer files:
+The published GitHub Pages site highlights the following viewer files:
 
 - `checkpoints/html_visualizations/MITEA_107_scan1_ED.nii_meta_3d_mesh.html`
 - `checkpoints/html_visualizations/MITEA_107_scan1_ED.nii_mixed_3d_mesh.html`

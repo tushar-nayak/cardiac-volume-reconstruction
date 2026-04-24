@@ -25,6 +25,7 @@ from dataclasses import dataclass
 from datetime import datetime
 from pathlib import Path
 from typing import Dict, List, Tuple, Optional, Any
+import os
 
 import nibabel as nib
 import numpy as np
@@ -32,6 +33,13 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 import torch.optim as optim
+
+DATA_PATH = Path(
+    os.getenv(
+        "CARDIAC_DATA_PATH",
+        str(Path(__file__).resolve().parents[1] / "cap-mitea" / "mitea"),
+    )
+).expanduser()
 from plotly.subplots import make_subplots
 import plotly.graph_objects as go
 
@@ -43,7 +51,7 @@ CONFIG: Dict = {
     "device": "cuda" if torch.cuda.is_available() else "cpu",
 
     # data paths
-    "data_path": Path("/home/sofa/host_dir/cap-mitea/mitea"),
+    "data_path": DATA_PATH,
     "checkpoint_path": Path("./checkpoints5"),
     "html_output_path": Path("./checkpoints5/html_visualizations30"),
 
@@ -134,7 +142,7 @@ CONFIG: Dict = {
 
     # Path to demographics CSV with columns like:
     #   mitea_id, category, age, height_cm, weight_kg, sex, image_quality
-    "demographics_csv": Path("/home/sofa/host_dir/cap-mitea/mitea/demographics.csv"),
+    "demographics_csv": DATA_PATH / "demographics.csv",
 
     # Subject category filter:
     #   "all"          -> no filtering
