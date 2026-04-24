@@ -3,93 +3,156 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Interactive GitHub Pages landing page for cardiac 3D comparison viewers.">
-  <title>Cardiac Reconstruction Viewers</title>
+  <meta name="description" content="GitHub Pages landing page for sparse 2D to 3D cardiac reconstruction results and interactive viewers.">
+  <title>Cardiac Reconstruction Project</title>
   <style>
     :root {
       color-scheme: dark;
-      --bg: #08111f;
-      --panel: rgba(11, 19, 34, 0.82);
-      --panel-strong: #0e1a2d;
-      --line: rgba(160, 184, 255, 0.16);
-      --text: #eaf0ff;
-      --muted: #9fb0d0;
-      --accent: #67e8f9;
-      --accent-2: #a78bfa;
-      --good: #4ade80;
-      --shadow: 0 24px 60px rgba(0, 0, 0, 0.35);
+      --bg: #071018;
+      --bg-2: #0c1622;
+      --panel: rgba(12, 22, 34, 0.88);
+      --panel-2: rgba(15, 27, 43, 0.94);
+      --line: rgba(174, 197, 255, 0.16);
+      --text: #eef4ff;
+      --muted: #a7b6cf;
+      --accent: #61dafb;
+      --accent-2: #9f8cff;
+      --good: #53f39d;
+      --warn: #ffd166;
+      --shadow: 0 28px 60px rgba(0, 0, 0, 0.32);
+      --radius: 24px;
     }
 
     * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
     body {
       margin: 0;
       min-height: 100vh;
-      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       color: var(--text);
       background:
-        radial-gradient(circle at top left, rgba(103, 232, 249, 0.14), transparent 30%),
-        radial-gradient(circle at top right, rgba(167, 139, 250, 0.12), transparent 32%),
-        linear-gradient(180deg, #060b14 0%, var(--bg) 100%);
+        radial-gradient(circle at top left, rgba(97, 218, 251, 0.16), transparent 26%),
+        radial-gradient(circle at top right, rgba(159, 140, 255, 0.14), transparent 28%),
+        linear-gradient(180deg, #050a10 0%, var(--bg) 100%);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
     }
 
+    a { color: inherit; }
+
     .wrap {
-      max-width: 1180px;
+      max-width: 1280px;
       margin: 0 auto;
-      padding: 48px 20px 64px;
+      padding: 28px 18px 56px;
     }
 
     .hero {
       display: grid;
-      gap: 16px;
-      padding: 28px;
+      gap: 22px;
+      padding: 30px;
       border: 1px solid var(--line);
-      border-radius: 24px;
-      background: linear-gradient(180deg, rgba(16, 26, 44, 0.92), rgba(10, 16, 28, 0.88));
+      border-radius: 32px;
+      background: linear-gradient(180deg, rgba(16, 27, 44, 0.96), rgba(9, 15, 25, 0.94));
       box-shadow: var(--shadow);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: auto -12% -35% auto;
+      width: 360px;
+      height: 360px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(97, 218, 251, 0.16), transparent 68%);
+      pointer-events: none;
     }
 
     .eyebrow {
       display: inline-flex;
       align-items: center;
+      gap: 8px;
       width: fit-content;
-      padding: 6px 10px;
-      border: 1px solid rgba(103, 232, 249, 0.24);
+      padding: 6px 12px;
+      border: 1px solid rgba(97, 218, 251, 0.22);
       border-radius: 999px;
+      background: rgba(97, 218, 251, 0.06);
       color: var(--accent);
-      font-size: 12px;
-      letter-spacing: 0.08em;
       text-transform: uppercase;
-      background: rgba(103, 232, 249, 0.08);
+      letter-spacing: 0.1em;
+      font-size: 12px;
     }
 
     h1 {
       margin: 0;
-      font-size: clamp(2rem, 5vw, 4rem);
-      line-height: 1.02;
-      letter-spacing: -0.04em;
+      font-size: clamp(2.1rem, 5vw, 4.4rem);
+      line-height: 0.95;
+      letter-spacing: -0.05em;
+      max-width: 12ch;
     }
 
     .lede {
-      max-width: 76ch;
       margin: 0;
+      max-width: 80ch;
       color: var(--muted);
-      font-size: 1.05rem;
-      line-height: 1.7;
+      font-size: 1.04rem;
+      line-height: 1.75;
     }
 
-    .meta {
+    .meta-row {
       display: flex;
       flex-wrap: wrap;
       gap: 10px;
-      color: var(--muted);
-      font-size: 0.95rem;
+      align-items: center;
     }
 
     .chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
       padding: 8px 12px;
       border: 1px solid var(--line);
       border-radius: 999px;
-      background: rgba(255, 255, 255, 0.03);
+      background: rgba(255, 255, 255, 0.035);
+      color: #d7e3fb;
+      font-size: 0.92rem;
+    }
+
+    .cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 12px 16px;
+      border-radius: 14px;
+      text-decoration: none;
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.04);
+      color: var(--text);
+      transition: transform 140ms ease, border-color 140ms ease, background 140ms ease;
+    }
+
+    .button:hover {
+      transform: translateY(-1px);
+      border-color: rgba(97, 218, 251, 0.3);
+      background: rgba(97, 218, 251, 0.08);
+    }
+
+    .button.primary {
+      color: #041119;
+      background: linear-gradient(135deg, var(--accent), #b8f6ff);
+      font-weight: 700;
+      border-color: transparent;
+    }
+
+    .button.primary:hover {
+      background: linear-gradient(135deg, #7be7f6, #cbfbff);
     }
 
     .section {
@@ -97,32 +160,151 @@
     }
 
     .section h2 {
-      margin: 0 0 12px;
-      font-size: 1.15rem;
-      letter-spacing: 0.04em;
+      margin: 0 0 14px;
+      font-size: 1rem;
       text-transform: uppercase;
-      color: #c8d3ee;
+      letter-spacing: 0.12em;
+      color: #c5d1ea;
     }
 
-    .grid {
+    .stats {
       display: grid;
-      gap: 16px;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+      gap: 14px;
     }
 
-    .card {
-      display: flex;
-      flex-direction: column;
-      gap: 14px;
+    .stat {
       padding: 18px;
       border-radius: 20px;
       border: 1px solid var(--line);
-      background: linear-gradient(180deg, rgba(14, 26, 45, 0.92), rgba(9, 15, 27, 0.88));
+      background: linear-gradient(180deg, rgba(14, 24, 38, 0.96), rgba(10, 16, 27, 0.9));
+      box-shadow: var(--shadow);
+    }
+
+    .stat .label {
+      color: var(--muted);
+      font-size: 0.86rem;
+      text-transform: uppercase;
+      letter-spacing: 0.09em;
+    }
+
+    .stat .value {
+      margin-top: 10px;
+      font-size: 1.5rem;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+    }
+
+    .stat .sub {
+      margin-top: 6px;
+      color: var(--muted);
+      line-height: 1.5;
+      font-size: 0.93rem;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.55fr) minmax(320px, 0.9fr);
+      gap: 18px;
+      align-items: start;
+    }
+
+    .panel {
+      border-radius: var(--radius);
+      border: 1px solid var(--line);
+      background: linear-gradient(180deg, rgba(13, 22, 35, 0.96), rgba(9, 14, 24, 0.92));
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .panel-head {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 18px 18px 0;
+      align-items: center;
+    }
+
+    .panel-title {
+      display: grid;
+      gap: 6px;
+    }
+
+    .panel-title h3 {
+      margin: 0;
+      font-size: 1.14rem;
+    }
+
+    .panel-title p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.55;
+      font-size: 0.94rem;
+    }
+
+    .viewer-toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      padding: 18px;
+    }
+
+    .viewer-button {
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.03);
+      color: var(--text);
+      border-radius: 999px;
+      padding: 10px 14px;
+      font-size: 0.93rem;
+      cursor: pointer;
+      transition: transform 140ms ease, border-color 140ms ease, background 140ms ease;
+    }
+
+    .viewer-button:hover {
+      transform: translateY(-1px);
+      border-color: rgba(97, 218, 251, 0.34);
+    }
+
+    .viewer-button.active {
+      color: #05121b;
+      background: linear-gradient(135deg, var(--accent), #b8f6ff);
+      border-color: transparent;
+      font-weight: 700;
+    }
+
+    .viewer-button .tag {
+      color: var(--muted);
+      font-size: 0.8rem;
+    }
+
+    .viewer-button.active .tag {
+      color: rgba(4, 17, 25, 0.75);
+    }
+
+    .viewer-frame {
+      width: 100%;
+      height: min(82vh, 920px);
+      border: 0;
+      display: block;
+      background: #08111b;
+    }
+
+    .sidebar {
+      display: grid;
+      gap: 18px;
+    }
+
+    .card {
+      padding: 18px;
+      border-radius: var(--radius);
+      border: 1px solid var(--line);
+      background: linear-gradient(180deg, rgba(13, 22, 35, 0.96), rgba(9, 14, 24, 0.92));
       box-shadow: var(--shadow);
     }
 
     .card h3 {
-      margin: 0;
+      margin: 0 0 10px;
       font-size: 1.05rem;
     }
 
@@ -133,149 +315,353 @@
       font-size: 0.95rem;
     }
 
-    .buttons {
-      display: flex;
-      flex-wrap: wrap;
+    .list {
+      display: grid;
       gap: 10px;
-      margin-top: auto;
+      margin-top: 14px;
     }
 
-    a.button {
-      display: inline-flex;
+    .list a {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
       align-items: center;
-      justify-content: center;
-      gap: 8px;
-      padding: 10px 14px;
-      border-radius: 12px;
       text-decoration: none;
-      color: var(--text);
+      padding: 12px 14px;
+      border-radius: 14px;
       border: 1px solid var(--line);
-      background: rgba(255, 255, 255, 0.04);
+      background: rgba(255, 255, 255, 0.03);
       transition: transform 140ms ease, border-color 140ms ease, background 140ms ease;
     }
 
-    a.button:hover {
+    .list a:hover {
       transform: translateY(-1px);
-      border-color: rgba(103, 232, 249, 0.35);
-      background: rgba(103, 232, 249, 0.08);
+      border-color: rgba(97, 218, 251, 0.34);
+      background: rgba(97, 218, 251, 0.07);
     }
 
-    a.primary {
-      color: #041018;
-      background: linear-gradient(135deg, var(--accent), #b7f6ff);
-      border-color: transparent;
+    .list a.active-link {
+      border-color: rgba(97, 218, 251, 0.4);
+      background: rgba(97, 218, 251, 0.1);
+    }
+
+    .list .name {
+      font-weight: 600;
+    }
+
+    .list .tag {
+      color: var(--muted);
+      font-size: 0.88rem;
+      white-space: nowrap;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      overflow: hidden;
+      border-radius: 16px;
+      border: 1px solid var(--line);
+    }
+
+    th, td {
+      padding: 12px 14px;
+      border-bottom: 1px solid rgba(174, 197, 255, 0.1);
+      text-align: left;
+    }
+
+    th {
+      color: #dbe6fb;
+      background: rgba(255, 255, 255, 0.03);
       font-weight: 700;
     }
 
-    a.primary:hover {
-      background: linear-gradient(135deg, #7ee8f4, #c7fbff);
+    td {
+      color: #edf2fd;
     }
 
+    tr:last-child td { border-bottom: 0; }
+
     .footer {
-      margin-top: 28px;
+      margin-top: 22px;
       color: var(--muted);
       font-size: 0.92rem;
-      line-height: 1.6;
+      line-height: 1.65;
     }
 
     code {
-      padding: 0.15rem 0.35rem;
-      border-radius: 6px;
+      padding: 0.14rem 0.38rem;
+      border-radius: 8px;
       background: rgba(255, 255, 255, 0.08);
       color: #dbeafe;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    @media (max-width: 1024px) {
+      .layout {
+        grid-template-columns: 1fr;
+      }
+
+      .viewer-frame {
+        height: 72vh;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .wrap {
+        padding: 14px 12px 40px;
+      }
+
+      .hero,
+      .card,
+      .panel {
+        border-radius: 20px;
+      }
+
+      .hero {
+        padding: 22px;
+      }
+
+      h1 {
+        max-width: 100%;
+      }
+
+      .viewer-frame {
+        height: 68vh;
+      }
     }
   </style>
 </head>
 <body>
   <main class="wrap">
     <section class="hero">
-      <div class="eyebrow">GitHub Pages Viewer</div>
-      <h1>Cardiac Reconstruction 3D Comparison Viewers</h1>
+      <div class="eyebrow">GitHub Pages Landing Page</div>
+      <h1>Few-shot 3D cardiac reconstruction from sparse 2D echo.</h1>
       <p class="lede">
-        Open the generated reconstruction viewers directly in the browser. Each subject has a side-by-side comparison
-        and an overlay view that compare the reconstructed cardiac volume against the original segmentation.
+        This page surfaces the reported results, the tracked reconstruction artifacts, and a live browser embed of the
+        best interactive visualizations in the repository. It is built to work as a static GitHub Pages site.
       </p>
-      <div class="meta">
-        <span class="chip">Comparison HTML</span>
-        <span class="chip">Overlay HTML</span>
-        <span class="chip">Relative links for GitHub Pages</span>
+      <div class="meta-row">
+        <span class="chip">MITEA healthy ED focus</span>
+        <span class="chip">Meta / Reptile vs Mixed / transfer</span>
+        <span class="chip">Interactive Plotly HTML viewers</span>
+        <span class="chip">Repo-local dataset: <code>cap-mitea/mitea</code></span>
+      </div>
+      <div class="cta-row">
+        <a class="button primary" href="results_index.md">Open Results Index</a>
+        <a class="button" href="report.md">Open Report</a>
+        <a class="button" href="README.md">Read README</a>
       </div>
     </section>
 
     <section class="section">
-      <h2>Tracked Viewers</h2>
-      <div class="grid" id="viewer-grid"></div>
+      <h2>Reported Headline Results</h2>
+      <div class="stats">
+        <div class="stat">
+          <div class="label">Meta / Reptile</div>
+          <div class="value">0.8638 Dice</div>
+          <div class="sub">0.7649 IoU on the reported MITEA healthy ED setting.</div>
+        </div>
+        <div class="stat">
+          <div class="label">Mixed / Transfer</div>
+          <div class="value">0.8491 Dice</div>
+          <div class="sub">0.7422 IoU from the global prior baseline.</div>
+        </div>
+        <div class="stat">
+          <div class="label">Dataset</div>
+          <div class="value">536 pairs</div>
+          <div class="sub">134 subjects, 4 scans each, confirmed in the repo-local dataset.</div>
+        </div>
+        <div class="stat">
+          <div class="label">Visualization mode</div>
+          <div class="value">Interactive</div>
+          <div class="sub">The embed below loads the same Plotly HTML artifacts stored in the repo.</div>
+        </div>
+      </div>
     </section>
 
-    <section class="section">
-      <h2>How To Use</h2>
-      <div class="card">
-        <p>
-          If this repository is published with GitHub Pages, this page can be the site landing page.
-          Click a subject below to open the comparison or overlay viewer in the browser.
-        </p>
-        <p>
-          The linked files live under <code>3d_comparison_viewers_v2/</code> and use relative paths, so they work
-          when hosted from the repo root.
-        </p>
-        <div class="buttons">
-          <a class="button primary" href="results_index.md">Open Results Index</a>
-          <a class="button" href="README.md">Open README</a>
+    <section class="section layout">
+      <div class="panel">
+        <div class="panel-head">
+          <div class="panel-title">
+            <h3>Interactive Viewer</h3>
+            <p>Switch between the strongest tracked artifacts without leaving the page.</p>
+          </div>
+          <a class="button" id="open-current" href="#" target="_blank" rel="noopener">Open current view</a>
+        </div>
+        <div class="viewer-toolbar" id="viewer-toolbar"></div>
+        <iframe
+          id="viewer-frame"
+          class="viewer-frame"
+          title="Interactive cardiac reconstruction viewer"
+          loading="lazy"
+          referrerpolicy="no-referrer"
+        ></iframe>
+      </div>
+
+      <div class="sidebar">
+        <div class="card">
+          <h3>Featured artifacts</h3>
+          <p>
+            The strongest-presenting files are the Meta and Mixed 3D meshes for MITEA_015 scan 1 ED, plus a polished
+            comparison/overlay pair for MITEA_001 scan 1 ED.
+          </p>
+          <div class="list">
+            <a href="checkpoints/html_visualizations/MITEA_015_scan1_ED.nii_meta_3d_mesh.html" data-view="meta-mesh">
+              <span class="name">Meta 3D mesh</span>
+              <span class="tag">MITEA_015_scan1_ED</span>
+            </a>
+            <a href="checkpoints/html_visualizations/MITEA_015_scan1_ED.nii_mixed_3d_mesh.html" data-view="mixed-mesh">
+              <span class="name">Mixed 3D mesh</span>
+              <span class="tag">MITEA_015_scan1_ED</span>
+            </a>
+            <a href="checkpoints3/html_visualizations3/MITEA_015_scan1_ES.nii_mixed_refined_3d_mesh.html" data-view="refined-mixed">
+              <span class="name">Refined mixed mesh</span>
+              <span class="tag">MITEA_015_scan1_ES</span>
+            </a>
+            <a href="3d_comparison_viewers_v2/MITEA_001_scan1_ED.nii_comparison.html" data-view="comparison">
+              <span class="name">Side-by-side comparison</span>
+              <span class="tag">MITEA_001_scan1_ED</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>How to browse</h3>
+          <p>
+            Use the buttons above for live embeds. Open the links in a new tab if you want the full Plotly controls or
+            if your browser blocks nested iframe interactions.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>Result summary</h3>
+          <table>
+            <thead>
+              <tr>
+                <th>Method</th>
+                <th>Dice</th>
+                <th>IoU</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Mixed</td>
+                <td>0.8491</td>
+                <td>0.7422</td>
+              </tr>
+              <tr>
+                <td>Meta</td>
+                <td>0.8638</td>
+                <td>0.7649</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="card">
+          <h3>Repository map</h3>
+          <p>
+            See <code>results_index.md</code> for the tracked HTML and metadata files, and <code>report.md</code> for
+            the full project write-up.
+          </p>
         </div>
       </div>
     </section>
 
     <p class="footer">
-      Generated artifacts in <code>sparse_reconstruction_results/*.nii.gz</code> are intentionally not tracked.
-      This page only links to the HTML viewers and text metadata snapshots.
+      This site is intended for GitHub Pages. The page links directly to the tracked Plotly artifacts under
+      <code>checkpoints/</code>, <code>checkpoints3/</code>, and <code>3d_comparison_viewers_v2/</code>, so the visual
+      evidence remains part of the repository instead of being duplicated into a separate web build.
     </p>
   </main>
 
   <script>
-    const viewers = [
+    const views = [
       {
-        subject: "MITEA_001_scan1_ED",
-        comparison: "3d_comparison_viewers_v2/MITEA_001_scan1_ED.nii_comparison.html",
-        overlay: "3d_comparison_viewers_v2/MITEA_001_scan1_ED.nii_overlay.html"
+        id: "meta-mesh",
+        label: "Meta 3D mesh",
+        src: "checkpoints/html_visualizations/MITEA_015_scan1_ED.nii_meta_3d_mesh.html",
+        note: "MITEA_015_scan1_ED"
       },
       {
-        subject: "MITEA_001_scan1_ES",
-        comparison: "3d_comparison_viewers_v2/MITEA_001_scan1_ES.nii_comparison.html",
-        overlay: "3d_comparison_viewers_v2/MITEA_001_scan1_ES.nii_overlay.html"
+        id: "meta-slices",
+        label: "Meta 2D slices",
+        src: "checkpoints/html_visualizations/MITEA_015_scan1_ED.nii_meta_2d_slices.html",
+        note: "MITEA_015_scan1_ED"
       },
       {
-        subject: "MITEA_001_scan2_ED",
-        comparison: "3d_comparison_viewers_v2/MITEA_001_scan2_ED.nii_comparison.html",
-        overlay: "3d_comparison_viewers_v2/MITEA_001_scan2_ED.nii_overlay.html"
+        id: "mixed-mesh",
+        label: "Mixed 3D mesh",
+        src: "checkpoints/html_visualizations/MITEA_015_scan1_ED.nii_mixed_3d_mesh.html",
+        note: "MITEA_015_scan1_ED"
       },
       {
-        subject: "MITEA_001_scan2_ES",
-        comparison: "3d_comparison_viewers_v2/MITEA_001_scan2_ES.nii_comparison.html",
-        overlay: "3d_comparison_viewers_v2/MITEA_001_scan2_ES.nii_overlay.html"
+        id: "refined-mixed",
+        label: "Refined mixed mesh",
+        src: "checkpoints3/html_visualizations3/MITEA_015_scan1_ES.nii_mixed_refined_3d_mesh.html",
+        note: "MITEA_015_scan1_ES"
       },
       {
-        subject: "MITEA_002_scan1_ED",
-        comparison: "3d_comparison_viewers_v2/MITEA_002_scan1_ED.nii_comparison.html",
-        overlay: "3d_comparison_viewers_v2/MITEA_002_scan1_ED.nii_overlay.html"
+        id: "comparison",
+        label: "Side-by-side comparison",
+        src: "3d_comparison_viewers_v2/MITEA_001_scan1_ED.nii_comparison.html",
+        note: "MITEA_001_scan1_ED"
+      },
+      {
+        id: "overlay",
+        label: "Overlay comparison",
+        src: "3d_comparison_viewers_v2/MITEA_001_scan1_ED.nii_overlay.html",
+        note: "MITEA_001_scan1_ED"
       }
     ];
 
-    const grid = document.getElementById("viewer-grid");
+    const toolbar = document.getElementById("viewer-toolbar");
+    const frame = document.getElementById("viewer-frame");
+    const openCurrent = document.getElementById("open-current");
+    const featuredLinks = document.querySelectorAll(".list a[data-view]");
+    const defaultView = views[0];
+    let activeView = defaultView;
 
-    viewers.forEach((item) => {
-      const card = document.createElement("article");
-      card.className = "card";
-      card.innerHTML = `
-        <div class="eyebrow">Subject</div>
-        <h3>${item.subject}</h3>
-        <p>Open the comparison or overlay view for this tracked reconstruction snapshot.</p>
-        <div class="buttons">
-          <a class="button primary" href="${item.comparison}">Comparison</a>
-          <a class="button" href="${item.overlay}">Overlay</a>
-        </div>
-      `;
-      grid.appendChild(card);
+    function setActive(view) {
+      activeView = view;
+      frame.src = view.src;
+      openCurrent.href = view.src;
+      openCurrent.textContent = `Open ${view.label}`;
+
+      toolbar.querySelectorAll("button").forEach((button) => {
+        button.classList.toggle("active", button.dataset.viewId === view.id);
+      });
+
+      featuredLinks.forEach((link) => {
+        link.classList.toggle("active-link", link.dataset.view === view.id);
+      });
+    }
+
+    views.forEach((view) => {
+      const button = document.createElement("button");
+      button.className = "viewer-button";
+      button.type = "button";
+      button.dataset.viewId = view.id;
+      button.innerHTML = `${view.label}<span class="tag"> ${view.note}</span>`;
+      button.addEventListener("click", () => setActive(view));
+      toolbar.appendChild(button);
     });
+
+    featuredLinks.forEach((link) => {
+      link.addEventListener("click", (event) => {
+        event.preventDefault();
+        const view = views.find((item) => item.id === link.dataset.view);
+        if (view) {
+          setActive(view);
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        }
+      });
+    });
+
+    setActive(defaultView);
   </script>
 </body>
 </html>
