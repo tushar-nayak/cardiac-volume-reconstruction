@@ -15,9 +15,8 @@
     .links { display: flex; flex-wrap: wrap; gap: 10px; margin: 18px 0 12px; }
     .button { padding: 9px 13px; border: 1px solid #d0d0cc; border-radius: 999px; background: #f4f4f1; color: #111; text-decoration: none; font-size: 0.92rem; }
     select { width: 100%; max-width: 520px; padding: 10px 12px; border: 1px solid #d0d0cc; border-radius: 10px; background: #fff; color: #111; font: inherit; }
-    .viewer-grid {
+    .viewer-stack {
       display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 12px;
       margin-top: 10px;
     }
@@ -30,7 +29,7 @@
       text-transform: uppercase;
       color: #555;
     }
-    iframe { width: 100%; height: min(76vh, 840px); border: 0; background: #fff; }
+    iframe { width: 100%; height: min(66vh, 720px); border: 0; background: #fff; }
     .grid { display: grid; gap: 14px; margin-top: 16px; }
     .subject { border-top: 1px solid #e7e7e2; padding-top: 14px; }
     .subject h3 { margin: 0 0 8px; font-size: 1rem; font-weight: 600; }
@@ -40,8 +39,7 @@
     .small { font-size: 0.95rem; color: #555; }
     @media (max-width: 640px) {
       main { padding: 18px 12px 36px; }
-      .viewer-grid { grid-template-columns: 1fr; }
-      iframe { height: 68vh; }
+      iframe { height: 58vh; }
     }
   </style>
 </head>
@@ -62,7 +60,7 @@
 
     <h2>Viewer</h2>
     <select id="viewer-select" aria-label="Select viewer"></select>
-    <div class="viewer-grid">
+    <div class="viewer-stack">
       <div class="viewer-panel">
         <h3>2D slices</h3>
         <iframe id="viewer-frame-2d" title="Cardiac reconstruction 2D viewer" loading="lazy"></iframe>
@@ -72,6 +70,7 @@
         <iframe id="viewer-frame-3d" title="Cardiac reconstruction 3D viewer" loading="lazy"></iframe>
       </div>
     </div>
+    <select id="viewer-select-bottom" aria-label="Select viewer"></select>
 
     <div class="grid">
     <div class="subject">
@@ -153,7 +152,8 @@
       }
     ];
 
-    const select = document.getElementById("viewer-select");
+    const selectTop = document.getElementById("viewer-select");
+    const selectBottom = document.getElementById("viewer-select-bottom");
     const frame2d = document.getElementById("viewer-frame-2d");
     const frame3d = document.getElementById("viewer-frame-3d");
 
@@ -161,19 +161,26 @@
       const option = document.createElement("option");
       option.value = String(index);
       option.textContent = view.label;
-      select.appendChild(option);
+      selectTop.appendChild(option.cloneNode(true));
+      selectBottom.appendChild(option);
       if (index === 0) {
-        option.selected = true;
+        selectTop.selectedIndex = 0;
+        selectBottom.selectedIndex = 0;
         frame2d.src = view.slices;
         frame3d.src = view.mesh;
       }
     });
 
-    select.addEventListener("change", () => {
-      const view = views[Number(select.value)];
+    function syncViews(index) {
+      const view = views[index];
       frame2d.src = view.slices;
       frame3d.src = view.mesh;
-    });
+      selectTop.value = String(index);
+      selectBottom.value = String(index);
+    }
+
+    selectTop.addEventListener("change", () => syncViews(Number(selectTop.value)));
+    selectBottom.addEventListener("change", () => syncViews(Number(selectBottom.value)));
   </script>
 </body>
 </html>
