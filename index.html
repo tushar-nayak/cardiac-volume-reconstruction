@@ -6,149 +6,28 @@
   <meta name="description" content="Cardiac reconstruction project landing page.">
   <title>Cardiac Reconstruction Project</title>
   <style>
-    body {
-      margin: 0;
-      background: #ffffff;
-      color: #111;
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-    }
-
-    main {
-      max-width: 960px;
-      margin: 0 auto;
-      padding: 24px 18px 48px;
-    }
-
-    h1, h2, h3 {
-      font-family: Georgia, "Times New Roman", serif;
-      font-weight: 700;
-      letter-spacing: -0.02em;
-    }
-
-    h1 {
-      margin: 10px 0 8px;
-      font-size: clamp(2.1rem, 5vw, 3.6rem);
-      line-height: 1;
-      max-width: 12ch;
-    }
-
-    h2 {
-      margin: 24px 0 8px;
-      font-size: 1.1rem;
-    }
-
-    p {
-      margin: 0 0 10px;
-      color: #444;
-      line-height: 1.7;
-      max-width: 72ch;
-    }
-
-    .eyebrow {
-      color: #666;
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      font-size: 0.75rem;
-    }
-
-    .links {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin: 18px 0 12px;
-    }
-
-    .button {
-      padding: 9px 13px;
-      border: 1px solid #d0d0cc;
-      border-radius: 999px;
-      background: #f4f4f1;
-      color: #111;
-      text-decoration: none;
-      font-size: 0.92rem;
-    }
-
-    .metrics {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 14px;
-      margin: 18px 0 10px;
-      color: #222;
-    }
-
-    .metric {
-      padding-right: 14px;
-      border-right: 1px solid #ddd;
-    }
-
-    .metric:last-child {
-      border-right: 0;
-      padding-right: 0;
-    }
-
-    .metric strong {
-      display: block;
-      font-size: 1.05rem;
-      margin-bottom: 2px;
-    }
-
-    .viewer-switcher {
-      margin-top: 16px;
-      display: grid;
-      gap: 8px;
-    }
-
-    select {
-      width: 100%;
-      max-width: 460px;
-      padding: 10px 12px;
-      border: 1px solid #d0d0cc;
-      border-radius: 10px;
-      background: #fff;
-      color: #111;
-      font: inherit;
-    }
-
-    iframe {
-      width: 100%;
-      height: min(76vh, 840px);
-      border: 0;
-      margin-top: 10px;
-      background: #fff;
-    }
-
-    .rule {
-      height: 1px;
-      background: #e7e7e2;
-      margin: 24px 0;
-    }
-
-    .small {
-      font-size: 0.95rem;
-      color: #555;
-    }
-
-    code {
-      background: #f2f2ef;
-      padding: 0.1rem 0.35rem;
-      border-radius: 6px;
-      font-size: 0.95em;
-    }
-
+    body { margin: 0; background: #fff; color: #111; font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+    main { max-width: 920px; margin: 0 auto; padding: 24px 18px 48px; }
+    h1 { margin: 10px 0 8px; font-family: Georgia, "Times New Roman", serif; font-size: clamp(2.1rem, 5vw, 3.5rem); line-height: 1; letter-spacing: -0.03em; }
+    h2 { margin: 24px 0 8px; font-family: Georgia, "Times New Roman", serif; font-size: 1.1rem; }
+    p { margin: 0 0 10px; color: #444; line-height: 1.7; max-width: 72ch; }
+    .eyebrow { color: #666; text-transform: uppercase; letter-spacing: 0.12em; font-size: 0.75rem; }
+    .links { display: flex; flex-wrap: wrap; gap: 10px; margin: 18px 0 12px; }
+    .button { padding: 9px 13px; border: 1px solid #d0d0cc; border-radius: 999px; background: #f4f4f1; color: #111; text-decoration: none; font-size: 0.92rem; }
+    .metrics { display: flex; flex-wrap: wrap; gap: 14px; margin: 18px 0 10px; color: #222; }
+    .metric { padding-right: 14px; border-right: 1px solid #ddd; }
+    .metric:last-child { border-right: 0; padding-right: 0; }
+    .metric strong { display: block; font-size: 1.05rem; margin-bottom: 2px; }
+    .viewer-switcher { margin-top: 16px; display: grid; gap: 8px; }
+    select { width: 100%; max-width: 520px; padding: 10px 12px; border: 1px solid #d0d0cc; border-radius: 10px; background: #fff; color: #111; font: inherit; }
+    iframe { width: 100%; height: min(76vh, 840px); border: 0; margin-top: 10px; background: #fff; }
+    .rule { height: 1px; background: #e7e7e2; margin: 24px 0; }
+    .small { font-size: 0.95rem; color: #555; }
+    code { background: #f2f2ef; padding: 0.1rem 0.35rem; border-radius: 6px; font-size: 0.95em; }
     @media (max-width: 640px) {
-      main {
-        padding: 18px 12px 36px;
-      }
-
-      .metric {
-        border-right: 0;
-        padding-right: 0;
-        width: 100%;
-      }
-
-      iframe {
-        height: 68vh;
-      }
+      main { padding: 18px 12px 36px; }
+      .metric { border-right: 0; padding-right: 0; width: 100%; }
+      iframe { height: 68vh; }
     }
   </style>
 </head>
@@ -157,9 +36,8 @@
     <div class="eyebrow">Medical Image Analysis Project</div>
     <h1>Few-shot 3D cardiac reconstruction from sparse 2D echo.</h1>
     <p>
-      Sparse-view left-ventricular reconstruction with an implicit neural representation. The best overlap in the
-      saved summaries is the mixed run without stratifiers, and the 107-series viewer set is the cleanest visual
-      showcase.
+      Sparse-view left-ventricular reconstruction with an implicit neural representation. The report highlights
+      the best full-volume overlap as the mixed run without stratifiers.
     </p>
 
     <div class="links">
@@ -183,36 +61,38 @@
         <span>Repo-local MITEA dataset</span>
       </div>
       <div class="metric">
-        <strong>107 runs</strong>
-        <span>Featured visual set</span>
+        <strong>3 featured subjects</strong>
+        <span>020, 080, 115</span>
       </div>
     </div>
 
     <div class="rule"></div>
 
-    <h2>Interactive results</h2>
-    <p class="small">Pick a viewer below. The page loads the selected Plotly HTML directly in the iframe.</p>
+    <h2>Interactive viewers</h2>
+    <p class="small">
+      These are tracked HTML exports, so they work on GitHub Pages. Pick a subject and switch between the 2D
+      slice overlay and 3D mesh.
+    </p>
     <div class="viewer-switcher">
       <select id="viewer-select" aria-label="Select interactive result viewer"></select>
       <iframe id="viewer-frame" title="Interactive cardiac reconstruction viewer" loading="lazy"></iframe>
     </div>
 
-    <h2>Notes</h2>
+    <h2>Note</h2>
     <p class="small">
-      The site is static and GitHub Pages compatible. The viewer files are stored under
-      <code>checkpoints/</code>, <code>checkpoints3/</code>, and <code>3d_comparison_viewers_v2/</code>.
+      The GitHub Pages viewer assets are tracked in the repo. The files that were previously only present locally
+      under ignored checkpoint folders now live as committed HTML viewer artifacts.
     </p>
   </main>
 
   <script>
     const views = [
-      { label: "107 scan 1 ED - Meta 3D mesh", src: "checkpoints/html_visualizations/MITEA_107_scan1_ED.nii_meta_3d_mesh.html" },
-      { label: "107 scan 1 ED - Mixed 3D mesh", src: "checkpoints/html_visualizations/MITEA_107_scan1_ED.nii_mixed_3d_mesh.html" },
-      { label: "107 scan 1 ES - Refined mixed mesh", src: "checkpoints3/html_visualizations3/MITEA_107_scan1_ES.nii_mixed_refined_3d_mesh.html" },
-      { label: "107 scan 2 ED - Meta 3D mesh", src: "checkpoints/html_visualizations/MITEA_107_scan2_ED.nii_meta_3d_mesh.html" },
-      { label: "107 scan 2 ES - Refined mixed mesh", src: "checkpoints3/html_visualizations3/MITEA_107_scan2_ES.nii_mixed_refined_3d_mesh.html" },
-      { label: "Comparison - MITEA_001 scan 1 ED", src: "3d_comparison_viewers_v2/MITEA_001_scan1_ED.nii_comparison.html" },
-      { label: "Overlay - MITEA_001 scan 1 ED", src: "3d_comparison_viewers_v2/MITEA_001_scan1_ED.nii_overlay.html" }
+      { label: "020 scan 1 ED - Mixed 3D mesh", src: "checkpoints/html_visualizations2/MITEA_020_scan1_ED.nii_mixed_3d_mesh.html" },
+      { label: "020 scan 1 ED - Mixed 2D slices", src: "checkpoints/html_visualizations2/MITEA_020_scan1_ED.nii_mixed_2d_slices.html" },
+      { label: "080 scan 1 ED - Mixed 3D mesh", src: "checkpoints/html_visualizations2/MITEA_080_scan1_ED.nii_mixed_3d_mesh.html" },
+      { label: "080 scan 1 ED - Mixed 2D slices", src: "checkpoints/html_visualizations2/MITEA_080_scan1_ED.nii_mixed_2d_slices.html" },
+      { label: "115 scan 1 ED - Mixed 3D mesh", src: "checkpoints/html_visualizations2/MITEA_115_scan1_ED.nii_mixed_3d_mesh.html" },
+      { label: "115 scan 1 ED - Mixed 2D slices", src: "checkpoints/html_visualizations2/MITEA_115_scan1_ED.nii_mixed_2d_slices.html" }
     ];
 
     const select = document.getElementById("viewer-select");
