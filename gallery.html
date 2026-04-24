@@ -5,205 +5,152 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>107 Reconstruction Gallery</title>
   <style>
-    :root {
-      color-scheme: light;
-      --bg: #f5f5f3;
-      --panel: #ffffff;
-      --panel-2: #f0f0ed;
-      --line: #d8d8d2;
-      --text: #111;
-      --muted: #555;
-      --shadow: 0 12px 32px rgba(0,0,0,0.08);
-      --radius: 18px;
-    }
-    * { box-sizing: border-box; }
     body {
       margin: 0;
-      min-height: 100vh;
-      background: var(--bg);
-      color: var(--text);
+      background: #fff;
+      color: #111;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+    main {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 24px 18px 48px;
+    }
+    h1, h2 {
       font-family: Georgia, "Times New Roman", serif;
+      letter-spacing: -0.02em;
     }
-    .wrap { max-width: 1200px; margin: 0 auto; padding: 24px 18px 40px; }
-    .hero, .panel, .card {
-      background: var(--panel);
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
+    h1 {
+      margin: 10px 0 8px;
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      line-height: 1;
     }
-    .hero { padding: 24px; display: grid; gap: 12px; }
-    h1 { margin: 0; font-size: clamp(2rem, 4vw, 3.2rem); line-height: 1; }
-    p { margin: 0; color: var(--muted); line-height: 1.65; font-family: system-ui, sans-serif; }
-    .toolbar, .list { display: flex; flex-wrap: wrap; gap: 10px; }
-    .button, .viewer-button {
-      border: 1px solid var(--line);
+    p {
+      margin: 0 0 10px;
+      color: #444;
+      line-height: 1.7;
+      max-width: 72ch;
+    }
+    .eyebrow {
+      color: #666;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      font-size: 0.75rem;
+    }
+    .links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 18px 0 12px;
+    }
+    .button {
+      padding: 9px 13px;
+      border: 1px solid #d0d0cc;
       border-radius: 999px;
-      background: var(--panel-2);
-      color: var(--text);
-      padding: 10px 14px;
+      background: #f4f4f1;
+      color: #111;
       text-decoration: none;
-      font-family: system-ui, sans-serif;
       font-size: 0.92rem;
     }
-    .viewer-button.active { background: #1a1a1a; color: #fff; border-color: #1a1a1a; }
-    .layout { display: grid; grid-template-columns: minmax(0, 1.45fr) minmax(300px, 0.9fr); gap: 16px; margin-top: 18px; }
-    .panel { overflow: hidden; }
-    .panel-head { padding: 16px; border-bottom: 1px solid var(--line); display: flex; justify-content: space-between; gap: 12px; align-items: center; }
-    .panel-head h2 { margin: 0 0 6px; font-family: system-ui, sans-serif; font-size: 1.05rem; }
-    .viewer-toolbar { padding: 16px 16px 0; }
-    .viewer-frame { width: 100%; height: min(80vh, 880px); border: 0; display: block; background: #fff; }
-    .sidebar { display: grid; gap: 16px; }
-    .card { padding: 16px; }
-    .card h3 { margin: 0 0 8px; font-family: system-ui, sans-serif; font-size: 1rem; }
-    .list { flex-direction: column; }
-    .list a {
-      display: flex; justify-content: space-between; gap: 12px; align-items: center;
-      text-decoration: none; color: var(--text);
-      padding: 12px 14px; border: 1px solid var(--line); border-radius: 14px; background: #fbfbfa;
-      font-family: system-ui, sans-serif;
+    select {
+      width: 100%;
+      max-width: 560px;
+      padding: 10px 12px;
+      border: 1px solid #d0d0cc;
+      border-radius: 10px;
+      background: #fff;
+      color: #111;
+      font: inherit;
+      margin: 10px 0 12px;
     }
-    .list a.active { border-color: #1a1a1a; background: #efefeb; }
-    .tag { color: var(--muted); font-size: 0.88rem; white-space: nowrap; }
-    @media (max-width: 1024px) { .layout { grid-template-columns: 1fr; } .viewer-frame { height: 72vh; } }
+    iframe {
+      width: 100%;
+      height: min(78vh, 860px);
+      border: 0;
+      background: #fff;
+    }
+    ul {
+      margin: 8px 0 0 18px;
+      padding: 0;
+      color: #444;
+      line-height: 1.7;
+    }
+    code {
+      background: #f2f2ef;
+      padding: 0.1rem 0.35rem;
+      border-radius: 6px;
+    }
+    .rule {
+      height: 1px;
+      background: #e7e7e2;
+      margin: 24px 0;
+    }
+    .small { font-size: 0.95rem; color: #555; }
   </style>
 </head>
 <body>
-  <main class="wrap">
-    <section class="hero">
-      <h1>107 Reconstruction Gallery</h1>
-      <p>Interactive Plotly exports for the subject you referenced in email. Use the controls to switch among the exact saved HTML viewers.</p>
-      <div class="toolbar">
-        <a class="button" href="index.html">Home</a>
-        <a class="button" href="results_index.html">Results</a>
-        <a class="button" href="report.html">Report</a>
-      </div>
-    </section>
+  <main>
+    <div class="eyebrow">Interactive Results</div>
+    <h1>107 Reconstruction Gallery</h1>
+    <p>
+      A minimal browser page for the saved Plotly exports. Select a viewer to inspect the reconstruction outputs for
+      the 107 subject set, plus the comparison and overlay views.
+    </p>
+    <div class="links">
+      <a class="button" href="index.html">Home</a>
+      <a class="button" href="results_index.html">Results Index</a>
+      <a class="button" href="report.html">Report</a>
+    </div>
 
-    <section class="layout">
-      <div class="panel">
-        <div class="panel-head">
-          <div>
-            <h2>Interactive viewer</h2>
-            <p>All links are relative so this works on GitHub Pages.</p>
-          </div>
-          <a class="button" id="open-current" href="#" target="_blank" rel="noopener">Open current view</a>
-        </div>
-        <div class="viewer-toolbar" id="viewer-toolbar"></div>
-        <iframe id="viewer-frame" class="viewer-frame" title="107 reconstruction viewer" loading="lazy"></iframe>
-      </div>
+    <h2>Viewer</h2>
+    <p class="small">The selected HTML file loads directly in the iframe below.</p>
+    <select id="viewer-select" aria-label="Select viewer"></select>
+    <iframe id="viewer-frame" title="107 reconstruction viewer" loading="lazy"></iframe>
 
-      <div class="sidebar">
-        <div class="card">
-          <h3>Selected files</h3>
-          <div class="list">
-            <a href="checkpoints/html_visualizations/MITEA_107_scan1_ED.nii_2d_slices.html" data-view="ed-2d-1">
-              <span>ED scan 1 2D slices</span><span class="tag">MITEA_107</span>
-            </a>
-            <a href="checkpoints/html_visualizations/MITEA_107_scan1_ED.nii_3d_mesh.html" data-view="ed-3d-1">
-              <span>ED scan 1 3D mesh</span><span class="tag">MITEA_107</span>
-            </a>
-            <a href="checkpoints/html_visualizations/MITEA_107_scan1_ED.nii_meta_3d_mesh.html" data-view="meta-ed-1">
-              <span>ED scan 1 meta mesh</span><span class="tag">MITEA_107</span>
-            </a>
-            <a href="checkpoints/html_visualizations/MITEA_107_scan1_ED.nii_mixed_3d_mesh.html" data-view="mixed-ed-1">
-              <span>ED scan 1 mixed mesh</span><span class="tag">MITEA_107</span>
-            </a>
-            <a href="checkpoints/html_visualizations/MITEA_107_scan1_ES.nii_2d_slices.html" data-view="es-2d-1">
-              <span>ES scan 1 2D slices</span><span class="tag">MITEA_107</span>
-            </a>
-            <a href="checkpoints/html_visualizations/MITEA_107_scan1_ES.nii_3d_mesh.html" data-view="es-3d-1">
-              <span>ES scan 1 3D mesh</span><span class="tag">MITEA_107</span>
-            </a>
-            <a href="checkpoints3/html_visualizations3/MITEA_107_scan1_ES.nii_mixed_refined_3d_mesh.html" data-view="refined-es-1">
-              <span>ES scan 1 refined mixed</span><span class="tag">MITEA_107</span>
-            </a>
-            <a href="checkpoints/html_visualizations/MITEA_107_scan2_ED.nii_2d_slices.html" data-view="ed-2d-2">
-              <span>ED scan 2 2D slices</span><span class="tag">MITEA_107</span>
-            </a>
-            <a href="checkpoints/html_visualizations/MITEA_107_scan2_ED.nii_3d_mesh.html" data-view="ed-3d-2">
-              <span>ED scan 2 3D mesh</span><span class="tag">MITEA_107</span>
-            </a>
-            <a href="checkpoints/html_visualizations/MITEA_107_scan2_ED.nii_meta_3d_mesh.html" data-view="meta-ed-2">
-              <span>ED scan 2 meta mesh</span><span class="tag">MITEA_107</span>
-            </a>
-            <a href="checkpoints/html_visualizations/MITEA_107_scan2_ED.nii_mixed_3d_mesh.html" data-view="mixed-ed-2">
-              <span>ED scan 2 mixed mesh</span><span class="tag">MITEA_107</span>
-            </a>
-            <a href="checkpoints/html_visualizations/MITEA_107_scan2_ES.nii_2d_slices.html" data-view="es-2d-2">
-              <span>ES scan 2 2D slices</span><span class="tag">MITEA_107</span>
-            </a>
-            <a href="checkpoints/html_visualizations/MITEA_107_scan2_ES.nii_3d_mesh.html" data-view="es-3d-2">
-              <span>ES scan 2 3D mesh</span><span class="tag">MITEA_107</span>
-            </a>
-            <a href="checkpoints3/html_visualizations3/MITEA_107_scan2_ES.nii_mixed_refined_3d_mesh.html" data-view="refined-es-2">
-              <span>ES scan 2 refined mixed</span><span class="tag">MITEA_107</span>
-            </a>
-            <a href="3d_comparison_viewers_v2/MITEA_001_scan1_ED.nii_comparison.html" data-view="compare">
-              <span>Comparison viewer</span><span class="tag">MITEA_001</span>
-            </a>
-            <a href="3d_comparison_viewers_v2/MITEA_001_scan1_ED.nii_overlay.html" data-view="overlay">
-              <span>Overlay viewer</span><span class="tag">MITEA_001</span>
-            </a>
-          </div>
-        </div>
-      </div>
-    </section>
+    <div class="rule"></div>
+
+    <h2>Included views</h2>
+    <ul>
+      <li>107 scan 1 ED, Meta / Mixed 3D meshes</li>
+      <li>107 scan 1 ES, refined mixed mesh</li>
+      <li>107 scan 2 ED, Meta / Mixed 3D meshes</li>
+      <li>107 scan 2 ES, refined mixed mesh</li>
+      <li>Comparison and overlay views for MITEA_001 scan 1 ED</li>
+    </ul>
+    <p class="small">
+      The viewer files live under <code>checkpoints/</code>, <code>checkpoints3/</code>, and
+      <code>3d_comparison_viewers_v2/</code>.
+    </p>
   </main>
   <script>
     const views = [
-      { id: "ed-2d-1", label: "ED 2D slices", src: "checkpoints/html_visualizations/MITEA_107_scan1_ED.nii_2d_slices.html" },
-      { id: "ed-3d-1", label: "ED 3D mesh", src: "checkpoints/html_visualizations/MITEA_107_scan1_ED.nii_3d_mesh.html" },
-      { id: "meta-ed-1", label: "Meta 3D mesh", src: "checkpoints/html_visualizations/MITEA_107_scan1_ED.nii_meta_3d_mesh.html" },
-      { id: "mixed-ed-1", label: "Mixed 3D mesh", src: "checkpoints/html_visualizations/MITEA_107_scan1_ED.nii_mixed_3d_mesh.html" },
-      { id: "es-2d-1", label: "ES 2D slices", src: "checkpoints/html_visualizations/MITEA_107_scan1_ES.nii_2d_slices.html" },
-      { id: "es-3d-1", label: "ES 3D mesh", src: "checkpoints/html_visualizations/MITEA_107_scan1_ES.nii_3d_mesh.html" },
-      { id: "refined-es-1", label: "Refined mixed", src: "checkpoints3/html_visualizations3/MITEA_107_scan1_ES.nii_mixed_refined_3d_mesh.html" },
-      { id: "ed-2d-2", label: "ED2 2D slices", src: "checkpoints/html_visualizations/MITEA_107_scan2_ED.nii_2d_slices.html" },
-      { id: "ed-3d-2", label: "ED2 3D mesh", src: "checkpoints/html_visualizations/MITEA_107_scan2_ED.nii_3d_mesh.html" },
-      { id: "meta-ed-2", label: "Meta ED2", src: "checkpoints/html_visualizations/MITEA_107_scan2_ED.nii_meta_3d_mesh.html" },
-      { id: "mixed-ed-2", label: "Mixed ED2", src: "checkpoints/html_visualizations/MITEA_107_scan2_ED.nii_mixed_3d_mesh.html" },
-      { id: "es-2d-2", label: "ES2 2D slices", src: "checkpoints/html_visualizations/MITEA_107_scan2_ES.nii_2d_slices.html" },
-      { id: "es-3d-2", label: "ES2 3D mesh", src: "checkpoints/html_visualizations/MITEA_107_scan2_ES.nii_3d_mesh.html" },
-      { id: "refined-es-2", label: "Refined ES2", src: "checkpoints3/html_visualizations3/MITEA_107_scan2_ES.nii_mixed_refined_3d_mesh.html" },
-      { id: "compare", label: "Comparison", src: "3d_comparison_viewers_v2/MITEA_001_scan1_ED.nii_comparison.html" },
-      { id: "overlay", label: "Overlay", src: "3d_comparison_viewers_v2/MITEA_001_scan1_ED.nii_overlay.html" }
+      { label: "107 scan 1 ED - Meta 3D mesh", src: "checkpoints/html_visualizations/MITEA_107_scan1_ED.nii_meta_3d_mesh.html" },
+      { label: "107 scan 1 ED - Mixed 3D mesh", src: "checkpoints/html_visualizations/MITEA_107_scan1_ED.nii_mixed_3d_mesh.html" },
+      { label: "107 scan 1 ES - Refined mixed mesh", src: "checkpoints3/html_visualizations3/MITEA_107_scan1_ES.nii_mixed_refined_3d_mesh.html" },
+      { label: "107 scan 2 ED - Meta 3D mesh", src: "checkpoints/html_visualizations/MITEA_107_scan2_ED.nii_meta_3d_mesh.html" },
+      { label: "107 scan 2 ED - Mixed 3D mesh", src: "checkpoints/html_visualizations/MITEA_107_scan2_ED.nii_mixed_3d_mesh.html" },
+      { label: "107 scan 2 ES - Refined mixed mesh", src: "checkpoints3/html_visualizations3/MITEA_107_scan2_ES.nii_mixed_refined_3d_mesh.html" },
+      { label: "Comparison - MITEA_001 scan 1 ED", src: "3d_comparison_viewers_v2/MITEA_001_scan1_ED.nii_comparison.html" },
+      { label: "Overlay - MITEA_001 scan 1 ED", src: "3d_comparison_viewers_v2/MITEA_001_scan1_ED.nii_overlay.html" }
     ];
 
-    const toolbar = document.getElementById("viewer-toolbar");
+    const select = document.getElementById("viewer-select");
     const frame = document.getElementById("viewer-frame");
-    const openCurrent = document.getElementById("open-current");
-    const links = document.querySelectorAll(".list a[data-view]");
 
-    function activate(view) {
-      frame.src = view.src;
-      openCurrent.href = view.src;
-      openCurrent.textContent = `Open ${view.label}`;
-      toolbar.querySelectorAll("button").forEach((button) => {
-        button.classList.toggle("active", button.dataset.viewId === view.id);
-      });
-      links.forEach((link) => link.classList.toggle("active", link.dataset.view === view.id));
-    }
-
-    views.forEach((view, i) => {
-      const button = document.createElement("button");
-      button.className = "viewer-button";
-      button.type = "button";
-      button.dataset.viewId = view.id;
-      button.textContent = view.label;
-      button.addEventListener("click", () => activate(view));
-      toolbar.appendChild(button);
-      if (i === 0) button.classList.add("active");
+    views.forEach((view, index) => {
+      const option = document.createElement("option");
+      option.value = view.src;
+      option.textContent = view.label;
+      if (index === 0) {
+        option.selected = true;
+        frame.src = view.src;
+      }
+      select.appendChild(option);
     });
 
-    links.forEach((link) => {
-      link.addEventListener("click", (e) => {
-        e.preventDefault();
-        const view = views.find((item) => item.id === link.dataset.view);
-        if (view) activate(view);
-      });
+    select.addEventListener("change", () => {
+      frame.src = select.value;
     });
-
-    activate(views[0]);
   </script>
 </body>
 </html>

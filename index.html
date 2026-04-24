@@ -3,508 +3,235 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Landing page for the cardiac reconstruction project and its interactive viewer files.">
+  <meta name="description" content="Cardiac reconstruction project landing page.">
   <title>Cardiac Reconstruction Project</title>
   <style>
-    :root {
-      color-scheme: light;
-      --bg: #f5f5f3;
-      --panel: #ffffff;
-      --panel-2: #f0f0ed;
-      --line: #d8d8d2;
-      --text: #111111;
-      --muted: #555555;
-      --shadow: 0 12px 32px rgba(0, 0, 0, 0.08);
-      --radius: 18px;
-    }
-
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
     body {
       margin: 0;
-      min-height: 100vh;
-      background: var(--bg);
-      color: var(--text);
-      font-family: Georgia, "Times New Roman", serif;
+      background: #ffffff;
+      color: #111;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
     }
 
-    a { color: inherit; }
-
-    .wrap {
-      max-width: 1180px;
+    main {
+      max-width: 960px;
       margin: 0 auto;
-      padding: 28px 18px 48px;
+      padding: 24px 18px 48px;
     }
 
-    .hero, .panel, .card {
-      background: var(--panel);
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-    }
-
-    .hero {
-      padding: 28px;
-      display: grid;
-      gap: 16px;
-    }
-
-    .eyebrow {
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      font-size: 0.75rem;
-      color: var(--muted);
+    h1, h2, h3 {
+      font-family: Georgia, "Times New Roman", serif;
+      font-weight: 700;
+      letter-spacing: -0.02em;
     }
 
     h1 {
-      margin: 0;
-      font-size: clamp(2rem, 5vw, 3.8rem);
+      margin: 10px 0 8px;
+      font-size: clamp(2.1rem, 5vw, 3.6rem);
       line-height: 1;
-      letter-spacing: -0.04em;
-      font-weight: 700;
+      max-width: 12ch;
     }
 
-    .lede, p {
-      margin: 0;
-      color: var(--muted);
+    h2 {
+      margin: 24px 0 8px;
+      font-size: 1.1rem;
+    }
+
+    p {
+      margin: 0 0 10px;
+      color: #444;
       line-height: 1.7;
-      font-size: 1rem;
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      max-width: 72ch;
     }
 
-    .meta-row, .cta-row, .toolbar, .list {
+    .eyebrow {
+      color: #666;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      font-size: 0.75rem;
+    }
+
+    .links {
       display: flex;
       flex-wrap: wrap;
       gap: 10px;
+      margin: 18px 0 12px;
     }
 
-    .chip, .button, .viewer-button {
-      border: 1px solid var(--line);
+    .button {
+      padding: 9px 13px;
+      border: 1px solid #d0d0cc;
       border-radius: 999px;
-      background: var(--panel-2);
-      color: var(--text);
+      background: #f4f4f1;
+      color: #111;
       text-decoration: none;
-      padding: 10px 14px;
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       font-size: 0.92rem;
     }
 
-    .button:hover, .viewer-button:hover, .list a:hover {
-      background: #ecece8;
-    }
-
-    .button.primary, .viewer-button.active {
-      background: #1a1a1a;
-      color: #f7f7f5;
-      border-color: #1a1a1a;
-    }
-
-    .section {
-      margin-top: 22px;
-    }
-
-    .section h2 {
-      margin: 0 0 10px;
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      font-size: 0.9rem;
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      color: var(--muted);
-    }
-
-    .stats {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
-      gap: 12px;
-    }
-
-    .stat {
-      padding: 16px;
-      background: var(--panel);
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-    }
-
-    .stat .label {
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      color: var(--muted);
-      font-size: 0.8rem;
-      text-transform: uppercase;
-      letter-spacing: 0.09em;
-    }
-
-    .stat .value {
-      margin-top: 10px;
-      font-size: 1.4rem;
-      font-weight: 700;
-      color: var(--text);
-    }
-
-    .layout {
-      display: grid;
-      grid-template-columns: minmax(0, 1.5fr) minmax(300px, 0.9fr);
-      gap: 16px;
-      align-items: start;
-    }
-
-    .panel {
-      overflow: hidden;
-    }
-
-    .panel-head, .panel-body {
-      padding: 16px;
-    }
-
-    .panel-head {
+    .metrics {
       display: flex;
-      justify-content: space-between;
-      gap: 12px;
-      align-items: center;
-      border-bottom: 1px solid var(--line);
+      flex-wrap: wrap;
+      gap: 14px;
+      margin: 18px 0 10px;
+      color: #222;
     }
 
-    .panel-title h3 {
-      margin: 0 0 6px;
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      font-size: 1.05rem;
+    .metric {
+      padding-right: 14px;
+      border-right: 1px solid #ddd;
     }
 
-    .panel-title p {
-      max-width: 60ch;
+    .metric:last-child {
+      border-right: 0;
+      padding-right: 0;
     }
 
-    .viewer-toolbar {
-      padding: 16px 16px 0;
-    }
-
-    .viewer-frame {
-      width: 100%;
-      height: min(78vh, 860px);
-      border: 0;
+    .metric strong {
       display: block;
+      font-size: 1.05rem;
+      margin-bottom: 2px;
+    }
+
+    .viewer-switcher {
+      margin-top: 16px;
+      display: grid;
+      gap: 8px;
+    }
+
+    select {
+      width: 100%;
+      max-width: 460px;
+      padding: 10px 12px;
+      border: 1px solid #d0d0cc;
+      border-radius: 10px;
+      background: #fff;
+      color: #111;
+      font: inherit;
+    }
+
+    iframe {
+      width: 100%;
+      height: min(76vh, 840px);
+      border: 0;
+      margin-top: 10px;
       background: #fff;
     }
 
-    .sidebar {
-      display: grid;
-      gap: 16px;
+    .rule {
+      height: 1px;
+      background: #e7e7e2;
+      margin: 24px 0;
     }
 
-    .card {
-      padding: 16px;
-    }
-
-    .card h3 {
-      margin: 0 0 8px;
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      font-size: 1rem;
-    }
-
-    .list {
-      margin-top: 12px;
-      flex-direction: column;
-    }
-
-    .list a {
-      display: flex;
-      justify-content: space-between;
-      gap: 12px;
-      align-items: center;
-      text-decoration: none;
-      color: var(--text);
-      padding: 12px 14px;
-      border: 1px solid var(--line);
-      border-radius: 14px;
-      background: #fbfbfa;
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-    }
-
-    .list a.active {
-      border-color: #1a1a1a;
-      background: #efefeb;
-    }
-
-    .list .tag {
-      color: var(--muted);
-      font-size: 0.88rem;
-      white-space: nowrap;
-    }
-
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      font-size: 0.94rem;
-    }
-
-    th, td {
-      padding: 10px 12px;
-      border-bottom: 1px solid var(--line);
-      text-align: left;
-    }
-
-    th {
-      color: var(--muted);
-      font-weight: 600;
-    }
-
-    .footer {
-      margin-top: 18px;
-      color: var(--muted);
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      font-size: 0.9rem;
-      line-height: 1.6;
+    .small {
+      font-size: 0.95rem;
+      color: #555;
     }
 
     code {
+      background: #f2f2ef;
       padding: 0.1rem 0.35rem;
       border-radius: 6px;
-      background: #ecece8;
-      color: #222;
-      font-family: ui-monospace, SFMono-Regular, Consolas, "Liberation Mono", monospace;
-      font-size: 0.92em;
-    }
-
-    @media (max-width: 1024px) {
-      .layout {
-        grid-template-columns: 1fr;
-      }
-
-      .viewer-frame {
-        height: 70vh;
-      }
+      font-size: 0.95em;
     }
 
     @media (max-width: 640px) {
-      .wrap {
-        padding: 12px;
+      main {
+        padding: 18px 12px 36px;
       }
 
-      .hero {
-        padding: 20px;
+      .metric {
+        border-right: 0;
+        padding-right: 0;
+        width: 100%;
       }
 
-      .panel-head {
-        flex-direction: column;
-        align-items: flex-start;
+      iframe {
+        height: 68vh;
       }
     }
   </style>
 </head>
 <body>
-  <main class="wrap">
-    <section class="hero">
-      <div class="eyebrow">Cardiac Reconstruction Project</div>
-      <h1>Few-shot 3D cardiac reconstruction from sparse 2D echo.</h1>
-      <p class="lede">
-        The page below is a simple static landing page for GitHub Pages. It links to the tracked results and embeds
-        the interactive Plotly viewers generated from the saved reconstruction runs.
-      </p>
-      <div class="meta-row">
-        <span class="chip">Repo-local dataset: <code>cap-mitea/mitea</code></span>
-        <span class="chip">Interactive HTML viewers</span>
-        <span class="chip">Static GitHub Pages compatible</span>
+  <main>
+    <div class="eyebrow">Medical Image Analysis Project</div>
+    <h1>Few-shot 3D cardiac reconstruction from sparse 2D echo.</h1>
+    <p>
+      Sparse-view left-ventricular reconstruction with an implicit neural representation. The best overlap in the
+      saved summaries is the mixed run without stratifiers, and the 107-series viewer set is the cleanest visual
+      showcase.
+    </p>
+
+    <div class="links">
+      <a class="button" href="gallery.html">Interactive Results</a>
+      <a class="button" href="results_index.html">Results Index</a>
+      <a class="button" href="report.html">View Report</a>
+      <a class="button" href="README.html">Source README</a>
+    </div>
+
+    <div class="metrics">
+      <div class="metric">
+        <strong>0.8643 Dice</strong>
+        <span>Best full-volume overlap</span>
       </div>
-      <div class="cta-row">
-        <a class="button primary" href="results_index.html">Results Index</a>
-        <a class="button" href="report.html">Report</a>
-        <a class="button" href="README.html">README</a>
-        <a class="button" href="gallery.html">107 Gallery</a>
+      <div class="metric">
+        <strong>0.7658 IoU</strong>
+        <span>Mixed, no stratifiers</span>
       </div>
-    </section>
-
-    <section class="section">
-      <h2>Best Overlap</h2>
-      <div class="stats">
-        <div class="stat">
-          <div class="label">Mixed, no stratifiers</div>
-          <div class="value">0.8643 Dice</div>
-          <p>2D Dice 0.9505, IoU 0.9085, 3D IoU 0.7658. Best full-volume overlap in the saved summaries.</p>
-        </div>
-        <div class="stat">
-          <div class="label">Meta after refinement</div>
-          <div class="value">0.8638 Dice</div>
-          <p>2D Dice 0.9540, IoU 0.9143, 3D IoU 0.7649.</p>
-        </div>
-        <div class="stat">
-          <div class="label">Mixed stratified ED-healthy</div>
-          <div class="value">0.8491 Dice</div>
-          <p>2D Dice 0.9458, IoU 0.9007, 3D IoU 0.7422.</p>
-        </div>
-        <div class="stat">
-          <div class="label">Dataset</div>
-          <div class="value">536 pairs</div>
-          <p>134 subjects, 4 scans per subject, confirmed locally.</p>
-        </div>
+      <div class="metric">
+        <strong>536 pairs</strong>
+        <span>Repo-local MITEA dataset</span>
       </div>
-    </section>
-
-    <section class="section layout">
-      <div class="panel">
-        <div class="panel-head">
-          <div class="panel-title">
-            <h3>Interactive Viewer</h3>
-            <p>Switch between the tracked HTML artifacts. The page embeds the selected viewer directly.</p>
-          </div>
-          <a class="button" id="open-current" href="#" target="_blank" rel="noopener">Open current view</a>
-        </div>
-        <div class="viewer-toolbar" id="viewer-toolbar"></div>
-        <iframe
-          id="viewer-frame"
-          class="viewer-frame"
-          title="Interactive reconstruction viewer"
-          loading="lazy"
-        ></iframe>
+      <div class="metric">
+        <strong>107 runs</strong>
+        <span>Featured visual set</span>
       </div>
+    </div>
 
-      <div class="sidebar">
-      <div class="card">
-        <h3>Featured files</h3>
-          <p>The 107 runs are the most relevant visual set. The best-overlap metric comes from the mixed run without stratifiers.</p>
-          <div class="list">
-            <a href="checkpoints/html_visualizations/MITEA_107_scan1_ED.nii_meta_3d_mesh.html" data-view="meta-ed">
-              <span>Meta 3D mesh</span>
-              <span class="tag">MITEA_107_scan1_ED</span>
-            </a>
-            <a href="checkpoints/html_visualizations/MITEA_107_scan1_ED.nii_mixed_3d_mesh.html" data-view="mixed-ed">
-              <span>Mixed 3D mesh</span>
-              <span class="tag">MITEA_107_scan1_ED</span>
-            </a>
-            <a href="checkpoints3/html_visualizations3/MITEA_107_scan1_ES.nii_mixed_refined_3d_mesh.html" data-view="refined-es">
-              <span>Refined mixed mesh</span>
-              <span class="tag">MITEA_107_scan1_ES</span>
-            </a>
-            <a href="3d_comparison_viewers_v2/MITEA_001_scan1_ED.nii_comparison.html" data-view="compare">
-              <span>Comparison viewer</span>
-              <span class="tag">MITEA_001_scan1_ED</span>
-            </a>
-            <a href="3d_comparison_viewers_v2/MITEA_001_scan1_ED.nii_overlay.html" data-view="overlay">
-              <span>Overlay viewer</span>
-              <span class="tag">MITEA_001_scan1_ED</span>
-            </a>
-          </div>
-        </div>
+    <div class="rule"></div>
 
-        <div class="card">
-          <h3>Summary table</h3>
-          <table>
-            <thead>
-              <tr>
-                <th>Mode</th>
-                <th>Dice</th>
-                <th>IoU</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Mixed</td>
-                <td>0.8491</td>
-                <td>0.7422</td>
-              </tr>
-              <tr>
-                <td>Meta</td>
-                <td>0.8638</td>
-                <td>0.7649</td>
-              </tr>
-              <tr>
-                <td>Mixed no strat.</td>
-                <td>0.8643</td>
-                <td>0.7658</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+    <h2>Interactive results</h2>
+    <p class="small">Pick a viewer below. The page loads the selected Plotly HTML directly in the iframe.</p>
+    <div class="viewer-switcher">
+      <select id="viewer-select" aria-label="Select interactive result viewer"></select>
+      <iframe id="viewer-frame" title="Interactive cardiac reconstruction viewer" loading="lazy"></iframe>
+    </div>
 
-        <div class="card">
-          <h3>Notes</h3>
-          <p>
-            The landing page uses relative paths so it works on GitHub Pages. The embedded viewers remain the same
-            Plotly HTML exports you already generated.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <p class="footer">
-      The visual artifacts are stored under <code>checkpoints/</code>, <code>checkpoints3/</code>, and
-      <code>3d_comparison_viewers_v2/</code>. Large binary volumes are intentionally left out of the page.
+    <h2>Notes</h2>
+    <p class="small">
+      The site is static and GitHub Pages compatible. The viewer files are stored under
+      <code>checkpoints/</code>, <code>checkpoints3/</code>, and <code>3d_comparison_viewers_v2/</code>.
     </p>
   </main>
 
   <script>
     const views = [
-      {
-        id: "meta-ed",
-        label: "Meta 3D mesh",
-        src: "checkpoints/html_visualizations/MITEA_107_scan1_ED.nii_meta_3d_mesh.html"
-      },
-      {
-        id: "mixed-ed",
-        label: "Mixed 3D mesh",
-        src: "checkpoints/html_visualizations/MITEA_107_scan1_ED.nii_mixed_3d_mesh.html"
-      },
-      {
-        id: "refined-es",
-        label: "Refined mixed mesh",
-        src: "checkpoints3/html_visualizations3/MITEA_107_scan1_ES.nii_mixed_refined_3d_mesh.html"
-      },
-      {
-        id: "compare",
-        label: "Comparison viewer",
-        src: "3d_comparison_viewers_v2/MITEA_001_scan1_ED.nii_comparison.html"
-      },
-      {
-        id: "overlay",
-        label: "Overlay viewer",
-        src: "3d_comparison_viewers_v2/MITEA_001_scan1_ED.nii_overlay.html"
-      }
+      { label: "107 scan 1 ED - Meta 3D mesh", src: "checkpoints/html_visualizations/MITEA_107_scan1_ED.nii_meta_3d_mesh.html" },
+      { label: "107 scan 1 ED - Mixed 3D mesh", src: "checkpoints/html_visualizations/MITEA_107_scan1_ED.nii_mixed_3d_mesh.html" },
+      { label: "107 scan 1 ES - Refined mixed mesh", src: "checkpoints3/html_visualizations3/MITEA_107_scan1_ES.nii_mixed_refined_3d_mesh.html" },
+      { label: "107 scan 2 ED - Meta 3D mesh", src: "checkpoints/html_visualizations/MITEA_107_scan2_ED.nii_meta_3d_mesh.html" },
+      { label: "107 scan 2 ES - Refined mixed mesh", src: "checkpoints3/html_visualizations3/MITEA_107_scan2_ES.nii_mixed_refined_3d_mesh.html" },
+      { label: "Comparison - MITEA_001 scan 1 ED", src: "3d_comparison_viewers_v2/MITEA_001_scan1_ED.nii_comparison.html" },
+      { label: "Overlay - MITEA_001 scan 1 ED", src: "3d_comparison_viewers_v2/MITEA_001_scan1_ED.nii_overlay.html" }
     ];
 
-    const toolbar = document.getElementById("viewer-toolbar");
+    const select = document.getElementById("viewer-select");
     const frame = document.getElementById("viewer-frame");
-    const openCurrent = document.getElementById("open-current");
-    const featuredLinks = document.querySelectorAll(".list a[data-view]");
-
-    function activate(view) {
-      frame.src = view.src;
-      openCurrent.href = view.src;
-      openCurrent.textContent = `Open ${view.label}`;
-
-      toolbar.querySelectorAll("button").forEach((button) => {
-        button.classList.toggle("active", button.dataset.viewId === view.id);
-      });
-
-      featuredLinks.forEach((link) => {
-        link.classList.toggle("active", link.dataset.view === view.id);
-      });
-    }
 
     views.forEach((view, index) => {
-      const button = document.createElement("button");
-      button.className = "viewer-button";
-      button.type = "button";
-      button.dataset.viewId = view.id;
-      button.textContent = view.label;
-      button.addEventListener("click", () => activate(view));
-      toolbar.appendChild(button);
-
+      const option = document.createElement("option");
+      option.value = view.src;
+      option.textContent = view.label;
+      select.appendChild(option);
       if (index === 0) {
-        button.classList.add("active");
+        option.selected = true;
+        frame.src = view.src;
       }
     });
 
-    featuredLinks.forEach((link) => {
-      link.addEventListener("click", (event) => {
-        event.preventDefault();
-        const view = views.find((item) => item.id === link.dataset.view);
-        if (view) {
-          activate(view);
-        }
-      });
+    select.addEventListener("change", () => {
+      frame.src = select.value;
     });
-
-    activate(views[0]);
   </script>
 </body>
 </html>

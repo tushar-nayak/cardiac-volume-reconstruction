@@ -5,29 +5,32 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>README</title>
   <style>
-    body { margin: 0; background: #f5f5f3; color: #111; font-family: system-ui, sans-serif; }
-    main { max-width: 900px; margin: 0 auto; padding: 28px 18px 48px; }
-    a { color: inherit; }
-    .card { background: #fff; border: 1px solid #d8d8d2; border-radius: 18px; padding: 18px; box-shadow: 0 12px 32px rgba(0,0,0,0.08); }
-    h1, h2 { font-family: Georgia, serif; }
-    code { background: #ecece8; padding: 0.1rem 0.35rem; border-radius: 6px; }
-    .links { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 12px; }
-    .button { padding: 10px 14px; border-radius: 999px; border: 1px solid #d8d8d2; text-decoration: none; background: #f0f0ed; }
+    body { margin: 0; background: #fff; color: #111; font-family: system-ui, sans-serif; }
+    main { max-width: 900px; margin: 0 auto; padding: 24px 18px 48px; }
+    h1, h2 { font-family: Georgia, "Times New Roman", serif; }
+    h1 { margin: 10px 0 8px; font-size: clamp(2rem, 4vw, 3rem); line-height: 1; }
+    p { margin: 0 0 10px; color: #444; line-height: 1.7; }
+    .eyebrow { color: #666; text-transform: uppercase; letter-spacing: 0.12em; font-size: 0.75rem; }
+    .links { display: flex; flex-wrap: wrap; gap: 10px; margin: 16px 0 12px; }
+    .button { padding: 9px 13px; border: 1px solid #d0d0cc; border-radius: 999px; background: #f4f4f1; color: #111; text-decoration: none; font-size: 0.92rem; }
+    code { background: #f2f2ef; padding: 0.1rem 0.35rem; border-radius: 6px; }
   </style>
 </head>
 <body>
 <main>
-  <div class="card">
-    <h1>README</h1>
-    <p>This HTML page is a lightweight GitHub Pages-friendly companion to the repository README.</p>
-    <p>For the current project, use the local dataset path <code>cap-mitea/mitea</code> and the interactive pages from the home page.</p>
-    <div class="links">
-      <a class="button" href="index.html">Home</a>
-      <a class="button" href="gallery.html">107 Gallery</a>
-      <a class="button" href="results_index.html">Results</a>
-      <a class="button" href="report.html">Report</a>
-    </div>
+  <div class="eyebrow">Project README</div>
+  <h1>Cardiac Reconstruction Project</h1>
+  <p>
+    Static companion page for the repository README. The code uses the repo-local dataset at
+    <code>cap-mitea/mitea</code> and the interactive result pages live under the HTML files in the repo root.
+  </p>
+  <div class="links">
+    <a class="button" href="index.html">Home</a>
+    <a class="button" href="gallery.html">Gallery</a>
+    <a class="button" href="results_index.html">Results</a>
+    <a class="button" href="report.html">Report</a>
   </div>
+  <p>For the working pipeline, see <code>src/minimal_starter_5.py</code> and the related scripts in <code>src/</code>.</p>
 </main>
 </body>
 </html>
