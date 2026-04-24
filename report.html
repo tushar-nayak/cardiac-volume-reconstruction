@@ -24,8 +24,8 @@
     <p><strong>Few-Shot 2D Echo to 3D Cardiac Reconstruction via Neural Implicit Priors</strong></p>
     <p>
       This project reconstructs 3D left-ventricular geometry from sparse 2D echocardiographic supervision using an
-      implicit neural representation. The final reported result favored the meta-learned initialization for test-time
-      adaptation, with <strong>0.8638</strong> 3D Dice and <strong>0.7649</strong> 3D IoU after refinement.
+      implicit neural representation. The strongest full-volume overlap in the saved summaries was the mixed run
+      without stratifiers, with <strong>0.8643</strong> 3D Dice and <strong>0.7658</strong> 3D IoU.
     </p>
     <h2>Key results</h2>
     <table>
@@ -35,7 +35,7 @@
       <tbody>
         <tr><td>Mixed stratified ED-healthy</td><td>0.9458</td><td>0.9007</td><td>0.8491</td><td>0.7422</td></tr>
         <tr><td>Meta / Reptile, after refinement</td><td>0.9540</td><td>0.9143</td><td>0.8638</td><td>0.7649</td></tr>
-        <tr><td>Mixed, no stratifiers</td><td>0.9505</td><td>0.9085</td><td>0.8643</td><td>0.7658</td></tr>
+        <tr><td><strong>Mixed, no stratifiers</strong></td><td><strong>0.9505</strong></td><td><strong>0.9085</strong></td><td><strong>0.8643</strong></td><td><strong>0.7658</strong></td></tr>
       </tbody>
     </table>
     <h2>What was built</h2>

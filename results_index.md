@@ -14,6 +14,8 @@ The final write-up in [report.md](report.md) reports the following headline numb
 | Meta / Reptile, after refinement | 0.9540 | 0.9143 | 0.8638 | 0.7649 |
 | Mixed, no stratifiers | 0.9505 | 0.9085 | 0.8643 | 0.7658 |
 
+The best full-volume overlap in the saved summaries is the mixed run without stratifiers.
+
 The tracked HTML viewers and metadata below correspond to the documented reconstruction runs that support those results.
 
 ## Sparse Reconstruction Metadata
