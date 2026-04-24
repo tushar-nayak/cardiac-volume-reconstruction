@@ -19,14 +19,33 @@
     .metric:last-child { border-right: 0; padding-right: 0; }
     .metric strong { display: block; font-size: 1.05rem; margin-bottom: 2px; }
     .viewer-switcher { margin-top: 16px; display: grid; gap: 8px; }
+    .viewer-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+      align-items: start;
+    }
+    .viewer-panel {
+      display: grid;
+      gap: 8px;
+    }
+    .viewer-panel h3 {
+      margin: 0;
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #555;
+    }
     select { width: 100%; max-width: 520px; padding: 10px 12px; border: 1px solid #d0d0cc; border-radius: 10px; background: #fff; color: #111; font: inherit; }
-    iframe { width: 100%; height: min(76vh, 840px); border: 0; margin-top: 10px; background: #fff; }
+    iframe { width: 100%; height: min(76vh, 840px); border: 0; background: #fff; }
     .rule { height: 1px; background: #e7e7e2; margin: 24px 0; }
     .small { font-size: 0.95rem; color: #555; }
     code { background: #f2f2ef; padding: 0.1rem 0.35rem; border-radius: 6px; font-size: 0.95em; }
     @media (max-width: 640px) {
       main { padding: 18px 12px 36px; }
       .metric { border-right: 0; padding-right: 0; width: 100%; }
+      .viewer-grid { grid-template-columns: 1fr; }
       iframe { height: 68vh; }
     }
   </style>
@@ -70,53 +89,78 @@
 
     <h2>Interactive viewers</h2>
     <p class="small">
-      These are tracked HTML exports, so they work on GitHub Pages. Pick a subject and switch between the 2D
-      slice overlay and 3D mesh.
+      These are tracked HTML exports, so they work on GitHub Pages. Pick a subject and view the 2D slice overlay
+      and 3D mesh side by side.
     </p>
     <div class="viewer-switcher">
       <select id="viewer-select" aria-label="Select interactive result viewer"></select>
-      <iframe id="viewer-frame" title="Interactive cardiac reconstruction viewer" loading="lazy"></iframe>
+      <div class="viewer-grid">
+        <div class="viewer-panel">
+          <h3>2D slices</h3>
+          <iframe id="viewer-frame-2d" title="Interactive cardiac reconstruction 2D viewer" loading="lazy"></iframe>
+        </div>
+        <div class="viewer-panel">
+          <h3>3D mesh</h3>
+          <iframe id="viewer-frame-3d" title="Interactive cardiac reconstruction 3D viewer" loading="lazy"></iframe>
+        </div>
+      </div>
     </div>
-
-    <h2>Note</h2>
-    <p class="small">
-      The GitHub Pages viewer assets are tracked in the repo. The files that were previously only present locally
-      under ignored checkpoint folders now live as committed HTML viewer artifacts.
-    </p>
   </main>
 
   <script>
     const views = [
-      { label: "020 scan 1 ED - Mixed 3D mesh", src: "checkpoints/html_visualizations2/MITEA_020_scan1_ED.nii_mixed_3d_mesh.html" },
-      { label: "080 scan 1 ED - Mixed 3D mesh", src: "checkpoints/html_visualizations2/MITEA_080_scan1_ED.nii_mixed_3d_mesh.html" },
-      { label: "093 scan 2 ED - Mixed 3D mesh", src: "checkpoints/html_visualizations/MITEA_093_scan2_ED.nii_mixed_3d_mesh.html" },
-      { label: "103 scan 1 ED - Mixed 3D mesh", src: "checkpoints/html_visualizations/MITEA_103_scan1_ED.nii_mixed_3d_mesh.html" },
-      { label: "107 scan 1 ED - Mixed 3D mesh", src: "checkpoints/html_visualizations/MITEA_107_scan1_ED.nii_mixed_3d_mesh.html" },
-      { label: "115 scan 1 ED - Mixed 3D mesh", src: "checkpoints/html_visualizations2/MITEA_115_scan1_ED.nii_mixed_3d_mesh.html" },
-      { label: "093 scan 2 ED - Mixed 2D slices", src: "checkpoints/html_visualizations/MITEA_093_scan2_ED.nii_mixed_2d_slices.html" },
-      { label: "103 scan 1 ED - Mixed 2D slices", src: "checkpoints/html_visualizations/MITEA_103_scan1_ED.nii_mixed_2d_slices.html" },
-      { label: "107 scan 1 ED - Mixed 2D slices", src: "checkpoints/html_visualizations/MITEA_107_scan1_ED.nii_mixed_2d_slices.html" },
-      { label: "020 scan 1 ED - Mixed 2D slices", src: "checkpoints/html_visualizations2/MITEA_020_scan1_ED.nii_mixed_2d_slices.html" },
-      { label: "080 scan 1 ED - Mixed 2D slices", src: "checkpoints/html_visualizations2/MITEA_080_scan1_ED.nii_mixed_2d_slices.html" },
-      { label: "115 scan 1 ED - Mixed 2D slices", src: "checkpoints/html_visualizations2/MITEA_115_scan1_ED.nii_mixed_2d_slices.html" }
+      {
+        label: "020 scan 1 ED",
+        slices: "checkpoints/html_visualizations2/MITEA_020_scan1_ED.nii_mixed_2d_slices.html",
+        mesh: "checkpoints/html_visualizations2/MITEA_020_scan1_ED.nii_mixed_3d_mesh.html",
+      },
+      {
+        label: "080 scan 1 ED",
+        slices: "checkpoints/html_visualizations2/MITEA_080_scan1_ED.nii_mixed_2d_slices.html",
+        mesh: "checkpoints/html_visualizations2/MITEA_080_scan1_ED.nii_mixed_3d_mesh.html",
+      },
+      {
+        label: "093 scan 2 ED",
+        slices: "checkpoints/html_visualizations/MITEA_093_scan2_ED.nii_mixed_2d_slices.html",
+        mesh: "checkpoints/html_visualizations/MITEA_093_scan2_ED.nii_mixed_3d_mesh.html",
+      },
+      {
+        label: "103 scan 1 ED",
+        slices: "checkpoints/html_visualizations/MITEA_103_scan1_ED.nii_mixed_2d_slices.html",
+        mesh: "checkpoints/html_visualizations/MITEA_103_scan1_ED.nii_mixed_3d_mesh.html",
+      },
+      {
+        label: "107 scan 1 ED",
+        slices: "checkpoints/html_visualizations/MITEA_107_scan1_ED.nii_mixed_2d_slices.html",
+        mesh: "checkpoints/html_visualizations/MITEA_107_scan1_ED.nii_mixed_3d_mesh.html",
+      },
+      {
+        label: "115 scan 1 ED",
+        slices: "checkpoints/html_visualizations2/MITEA_115_scan1_ED.nii_mixed_2d_slices.html",
+        mesh: "checkpoints/html_visualizations2/MITEA_115_scan1_ED.nii_mixed_3d_mesh.html",
+      }
     ];
 
     const select = document.getElementById("viewer-select");
-    const frame = document.getElementById("viewer-frame");
+    const frame2d = document.getElementById("viewer-frame-2d");
+    const frame3d = document.getElementById("viewer-frame-3d");
 
     views.forEach((view, index) => {
       const option = document.createElement("option");
-      option.value = view.src;
+      option.value = String(index);
       option.textContent = view.label;
       select.appendChild(option);
       if (index === 0) {
         option.selected = true;
-        frame.src = view.src;
+        frame2d.src = view.slices;
+        frame3d.src = view.mesh;
       }
     });
 
     select.addEventListener("change", () => {
-      frame.src = select.value;
+      const view = views[Number(select.value)];
+      frame2d.src = view.slices;
+      frame3d.src = view.mesh;
     });
   </script>
 </body>
