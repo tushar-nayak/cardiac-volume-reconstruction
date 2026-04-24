@@ -1,8 +1,5 @@
 # Few-Shot 2D Echo to 3D Cardiac Reconstruction via Neural Implicit Priors
-
 Final project for `16825 Learning for 3D Vision`
-
-Author: Tushar Nayak (`tusharn`)
 
 This repository contains the code, saved artifacts, and reproduction instructions for reconstructing 3D left-ventricle shape from sparse 2D echocardiographic slices using neural implicit representations.
 
