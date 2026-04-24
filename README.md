@@ -20,10 +20,6 @@ This repository contains the code, saved artifacts, and reproduction instruction
   <img src="assets/figures/project-overview.png" alt="Few-shot 2D echo to 3D cardiac reconstruction overview" width="100%">
 </p>
 
-<p align="center">
-  <img src="assets/figures/project-demo.gif" alt="Animated project walkthrough" width="100%">
-</p>
-
 Start with:
 
 - [Setup](#setup)
