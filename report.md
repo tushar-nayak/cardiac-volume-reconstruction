@@ -1,7 +1,5 @@
 # Few-Shot 2D Echo to 3D Cardiac Reconstruction via Neural Implicit Priors
-
 **Final Project for 16825 Learning for 3D Vision**  
-**Author:** Tushar Nayak (tusharn)
 
 ---
 
