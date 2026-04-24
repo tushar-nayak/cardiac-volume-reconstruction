@@ -4,6 +4,13 @@ Final project for `16825 Learning for 3D Vision`
 This repository contains the code, saved artifacts, and reproduction instructions for reconstructing 3D left-ventricle shape from sparse 2D echocardiographic slices using neural implicit representations.
 
 <p align="center">
+  <img alt="Python" src="https://img.shields.io/badge/Python-3.11%2B-111111?style=flat-square">
+  <img alt="PyTorch" src="https://img.shields.io/badge/PyTorch-2.x-111111?style=flat-square">
+  <img alt="Dataset" src="https://img.shields.io/badge/Dataset-MITEA-111111?style=flat-square">
+  <img alt="Pages" src="https://img.shields.io/badge/Interactive%20Results-gh--pages-111111?style=flat-square">
+</p>
+
+<p align="center">
   <a href="https://tushar-nayak.github.io/cardiac-volume-reconstruction/" style="display:inline-block;padding:10px 16px;border:1px solid #111;border-radius:999px;text-decoration:none;color:#111;font-weight:600;">
     Interactive Results
   </a>
@@ -11,6 +18,10 @@ This repository contains the code, saved artifacts, and reproduction instruction
 
 <p align="center">
   <img src="assets/figures/project-overview.png" alt="Few-shot 2D echo to 3D cardiac reconstruction overview" width="100%">
+</p>
+
+<p align="center">
+  <img src="assets/figures/project-demo.gif" alt="Animated project walkthrough" width="100%">
 </p>
 
 Start with:
@@ -35,6 +46,19 @@ The main comparison is between:
 The strongest adapted result in the saved summaries is the meta-learned model on the healthy end-diastole setting, with 3D Dice `0.8638` and 3D IoU `0.7649`.
 
 For the full report, see [`report.md`](report.md).
+
+## What This Repo Does
+
+- Learns a continuous 3D cardiac occupancy field from sparse 2D echo views.
+- Compares a shared global prior against a meta-learned initialization for fast adaptation.
+- Publishes interactive 2D/3D visualizations and tracked result summaries for inspection.
+
+## Best Interactive Results
+
+- [Live site](https://tushar-nayak.github.io/cardiac-volume-reconstruction/)
+- [Best mixed 3D mesh](https://tushar-nayak.github.io/cardiac-volume-reconstruction/checkpoints/html_visualizations/MITEA_107_scan1_ED.nii_mixed_3d_mesh.html)
+- [Best mixed 2D slices](https://tushar-nayak.github.io/cardiac-volume-reconstruction/checkpoints/html_visualizations/MITEA_107_scan1_ED.nii_mixed_2d_slices.html)
+- [Best refined meta mesh](https://tushar-nayak.github.io/cardiac-volume-reconstruction/checkpoints3/html_visualizations3/MITEA_107_scan1_ES.nii_mixed_refined_3d_mesh.html)
 
 ## Key Results
 
