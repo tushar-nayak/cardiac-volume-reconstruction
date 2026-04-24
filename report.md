@@ -35,6 +35,12 @@ We tried to answer these questions over our project:
 
 The **MITEA (MR-Informed Three-dimensional Echocardiography Analysis)** dataset is a pioneering medical imaging collection designed to improve the automated segmentation of the left ventricle in 3D echocardiography (3DE). It consists of 3DE scans from a mixed cohort of approximately 134 human subjects, including both healthy controls and patients with acquired cardiac diseases, annotated using ground truth labels derived from higher resolution, paired cardiac magnetic resonance (CMR) imaging. By registering subject-specific CMR labels to the echocardiography data, MITEA mitigates the high inter-observer variability typically associated with manual ultrasound annotation, providing a robust benchmark for training machine learning models to analyze cardiac geometry (specifically at end-diastole and end-systole) with greater precision.
 
+The dataset should be cited as:
+
+```text
+Zhao D, Ferdian E, Maso Talou GD, Quill GM, Gilbert K, Wang VY, Babarenda Gamage TP, Pedrosa J, D'hooge J, Sutton TM, Lowe BS, Legget ME, Ruygrok PN, Doughty RN, Camara O, Young AA and Nash MP (2023) MITEA: A dataset for machine learning segmentation of the left ventricle in 3D echocardiography using subject-specific labels from cardiac magnetic resonance imaging. Front. Cardiovasc. Med. 9:1016703. doi: 10.3389/fcvm.2022.1016703
+```
+
 ### Cohort Selection
 
 To isolate geometric reconstruction capabilities from pathological deformations:
