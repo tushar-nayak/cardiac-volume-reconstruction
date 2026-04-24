@@ -1,6 +1,10 @@
-# Cardiac Volume Reconstruction
+# Few-Shot 2D Echo to 3D Cardiac Reconstruction via Neural Implicit Priors
 
-End-to-end experiments for reconstructing 3D cardiac shape from sparse 2D views using implicit neural representations. The repository now has a clean public interface for the working prototype, while preserving the original research scripts and archived iterations for traceability.
+Final project for `16825 Learning for 3D Vision`
+
+Author: Tushar Nayak (`tusharn`)
+
+This repository contains the code, saved artifacts, and reproduction instructions for reconstructing 3D left-ventricle shape from sparse 2D echocardiographic slices using neural implicit representations.
 
 Start with:
 
@@ -11,6 +15,31 @@ Start with:
 - [Reproducibility](REPRODUCIBILITY.md)
 - [Usage guide](docs/USAGE.md)
 - [Results index](results_index.md)
+
+## Summary
+
+This project reconstructs 3D left-ventricle geometry from sparse 2D echocardiographic slices using a coordinate-based implicit neural representation.
+
+The main comparison is between:
+
+- `Mixed`: transfer learning from a shared prior, followed by test-time refinement
+- `Meta`: Reptile-style meta-learning optimized for fast adaptation
+
+The strongest adapted result in the saved summaries is the meta-learned model on the healthy end-diastole setting, with 3D Dice `0.8638` and 3D IoU `0.7649`.
+
+For the full report, see [`report.md`](report.md).
+
+## Key Results
+
+The saved test-split summaries report:
+
+| Method | 3D Dice (full) | 3D IoU (full) |
+|---|---:|---:|
+| Mixed stratified ED-healthy | 0.8491 ± 0.0593 | 0.7422 ± 0.0866 |
+| Meta after refinement | 0.8638 ± 0.0599 | 0.7649 ± 0.0893 |
+| Mixed, no stratifiers | 0.8643 ± 0.0605 | 0.7658 ± 0.0904 |
+
+The best full-volume overlap in the saved summaries is the mixed model without stratifiers, while the meta-learned initialization remains the strongest adapted stratified result.
 
 ## What’s here
 
