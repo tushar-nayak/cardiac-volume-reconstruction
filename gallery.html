@@ -46,25 +46,46 @@
     <iframe id="viewer-frame" title="Cardiac reconstruction viewer" loading="lazy"></iframe>
 
     <div class="grid">
-      <div class="subject">
-        <h3>MITEA_020_scan1_ED</h3>
-        <div class="row">
-          <a href="checkpoints/html_visualizations2/MITEA_020_scan1_ED.nii_mixed_2d_slices.html">2D slices</a>
-          <a href="checkpoints/html_visualizations2/MITEA_020_scan1_ED.nii_mixed_3d_mesh.html">3D mesh</a>
-        </div>
+    <div class="subject">
+      <h3>MITEA_020_scan1_ED</h3>
+      <div class="row">
+        <a href="checkpoints/html_visualizations2/MITEA_020_scan1_ED.nii_mixed_2d_slices.html">2D slices</a>
+        <a href="checkpoints/html_visualizations2/MITEA_020_scan1_ED.nii_mixed_3d_mesh.html">3D mesh</a>
       </div>
-      <div class="subject">
-        <h3>MITEA_080_scan1_ED</h3>
-        <div class="row">
-          <a href="checkpoints/html_visualizations2/MITEA_080_scan1_ED.nii_mixed_2d_slices.html">2D slices</a>
-          <a href="checkpoints/html_visualizations2/MITEA_080_scan1_ED.nii_mixed_3d_mesh.html">3D mesh</a>
-        </div>
+    </div>
+    <div class="subject">
+      <h3>MITEA_080_scan1_ED</h3>
+      <div class="row">
+        <a href="checkpoints/html_visualizations2/MITEA_080_scan1_ED.nii_mixed_2d_slices.html">2D slices</a>
+        <a href="checkpoints/html_visualizations2/MITEA_080_scan1_ED.nii_mixed_3d_mesh.html">3D mesh</a>
       </div>
-      <div class="subject">
-        <h3>MITEA_115_scan1_ED</h3>
-        <div class="row">
-          <a href="checkpoints/html_visualizations2/MITEA_115_scan1_ED.nii_mixed_2d_slices.html">2D slices</a>
-          <a href="checkpoints/html_visualizations2/MITEA_115_scan1_ED.nii_mixed_3d_mesh.html">3D mesh</a>
+    </div>
+    <div class="subject">
+      <h3>MITEA_093_scan2_ED</h3>
+      <div class="row">
+        <a href="checkpoints/html_visualizations/MITEA_093_scan2_ED.nii_mixed_2d_slices.html">2D slices</a>
+        <a href="checkpoints/html_visualizations/MITEA_093_scan2_ED.nii_mixed_3d_mesh.html">3D mesh</a>
+      </div>
+    </div>
+    <div class="subject">
+      <h3>MITEA_103_scan1_ED</h3>
+      <div class="row">
+        <a href="checkpoints/html_visualizations/MITEA_103_scan1_ED.nii_mixed_2d_slices.html">2D slices</a>
+        <a href="checkpoints/html_visualizations/MITEA_103_scan1_ED.nii_mixed_3d_mesh.html">3D mesh</a>
+      </div>
+    </div>
+    <div class="subject">
+      <h3>MITEA_107_scan1_ED</h3>
+      <div class="row">
+        <a href="checkpoints/html_visualizations/MITEA_107_scan1_ED.nii_mixed_2d_slices.html">2D slices</a>
+        <a href="checkpoints/html_visualizations/MITEA_107_scan1_ED.nii_mixed_3d_mesh.html">3D mesh</a>
+      </div>
+    </div>
+    <div class="subject">
+      <h3>MITEA_115_scan1_ED</h3>
+      <div class="row">
+        <a href="checkpoints/html_visualizations2/MITEA_115_scan1_ED.nii_mixed_2d_slices.html">2D slices</a>
+        <a href="checkpoints/html_visualizations2/MITEA_115_scan1_ED.nii_mixed_3d_mesh.html">3D mesh</a>
         </div>
       </div>
     </div>
@@ -73,10 +94,16 @@
   <script>
     const views = [
       { label: "020 scan 1 ED - Mixed 3D mesh", src: "checkpoints/html_visualizations2/MITEA_020_scan1_ED.nii_mixed_3d_mesh.html" },
-      { label: "020 scan 1 ED - Mixed 2D slices", src: "checkpoints/html_visualizations2/MITEA_020_scan1_ED.nii_mixed_2d_slices.html" },
       { label: "080 scan 1 ED - Mixed 3D mesh", src: "checkpoints/html_visualizations2/MITEA_080_scan1_ED.nii_mixed_3d_mesh.html" },
-      { label: "080 scan 1 ED - Mixed 2D slices", src: "checkpoints/html_visualizations2/MITEA_080_scan1_ED.nii_mixed_2d_slices.html" },
+      { label: "093 scan 2 ED - Mixed 3D mesh", src: "checkpoints/html_visualizations/MITEA_093_scan2_ED.nii_mixed_3d_mesh.html" },
+      { label: "103 scan 1 ED - Mixed 3D mesh", src: "checkpoints/html_visualizations/MITEA_103_scan1_ED.nii_mixed_3d_mesh.html" },
+      { label: "107 scan 1 ED - Mixed 3D mesh", src: "checkpoints/html_visualizations/MITEA_107_scan1_ED.nii_mixed_3d_mesh.html" },
       { label: "115 scan 1 ED - Mixed 3D mesh", src: "checkpoints/html_visualizations2/MITEA_115_scan1_ED.nii_mixed_3d_mesh.html" },
+      { label: "020 scan 1 ED - Mixed 2D slices", src: "checkpoints/html_visualizations2/MITEA_020_scan1_ED.nii_mixed_2d_slices.html" },
+      { label: "080 scan 1 ED - Mixed 2D slices", src: "checkpoints/html_visualizations2/MITEA_080_scan1_ED.nii_mixed_2d_slices.html" },
+      { label: "093 scan 2 ED - Mixed 2D slices", src: "checkpoints/html_visualizations/MITEA_093_scan2_ED.nii_mixed_2d_slices.html" },
+      { label: "103 scan 1 ED - Mixed 2D slices", src: "checkpoints/html_visualizations/MITEA_103_scan1_ED.nii_mixed_2d_slices.html" },
+      { label: "107 scan 1 ED - Mixed 2D slices", src: "checkpoints/html_visualizations/MITEA_107_scan1_ED.nii_mixed_2d_slices.html" },
       { label: "115 scan 1 ED - Mixed 2D slices", src: "checkpoints/html_visualizations2/MITEA_115_scan1_ED.nii_mixed_2d_slices.html" }
     ];
 
