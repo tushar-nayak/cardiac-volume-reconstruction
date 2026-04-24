@@ -8,10 +8,11 @@ For a browser-friendly landing page, open [index.html](index.html) or publish it
 
 The final write-up in [report.md](report.md) reports the following headline numbers on the MITEA healthy end-diastole setting:
 
-| Method | 3D Dice | 3D IoU |
-| --- | --- | --- |
-| Mixed / Transfer Learning | 0.8491 | 0.7422 |
-| Meta / Reptile | 0.8638 | 0.7649 |
+| Method | 2D Dice | 2D IoU | 3D Dice | 3D IoU |
+| --- | --- | --- | --- | --- |
+| Mixed stratified ED-healthy | 0.9458 | 0.9007 | 0.8491 | 0.7422 |
+| Meta / Reptile, after refinement | 0.9540 | 0.9143 | 0.8638 | 0.7649 |
+| Mixed, no stratifiers | 0.9505 | 0.9085 | 0.8643 | 0.7658 |
 
 The tracked HTML viewers and metadata below correspond to the documented reconstruction runs that support those results.
 
@@ -48,6 +49,16 @@ Files in `3d_comparison_viewers_v2/` are interactive HTML viewers for the same t
 - `3d_comparison_viewers_v2/MITEA_002_scan1_ED.nii_overlay.html`
 
 Open the HTML files in a browser to inspect the reconstructed surfaces and overlays.
+
+## Featured Visualization Set
+
+The GitHub Pages landing page highlights the following viewer files:
+
+- `checkpoints/html_visualizations/MITEA_107_scan1_ED.nii_meta_3d_mesh.html`
+- `checkpoints/html_visualizations/MITEA_107_scan1_ED.nii_mixed_3d_mesh.html`
+- `checkpoints3/html_visualizations3/MITEA_107_scan1_ES.nii_mixed_refined_3d_mesh.html`
+- `3d_comparison_viewers_v2/MITEA_001_scan1_ED.nii_comparison.html`
+- `3d_comparison_viewers_v2/MITEA_001_scan1_ED.nii_overlay.html`
 
 ## Not Tracked
 
