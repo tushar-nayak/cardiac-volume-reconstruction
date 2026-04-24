@@ -4,6 +4,17 @@ This repository tracks a small set of text-based result snapshots so the latest 
 
 For a browser-friendly landing page, open [index.html](index.html) or publish it via GitHub Pages.
 
+## Reported Headline Results
+
+The final write-up in [report.md](report.md) reports the following headline numbers on the MITEA healthy end-diastole setting:
+
+| Method | 3D Dice | 3D IoU |
+| --- | --- | --- |
+| Mixed / Transfer Learning | 0.8491 | 0.7422 |
+| Meta / Reptile | 0.8638 | 0.7649 |
+
+The tracked HTML viewers and metadata below correspond to the documented reconstruction runs that support those results.
+
 ## Sparse Reconstruction Metadata
 
 Files in `sparse_reconstruction_results/` contain per-subject reconstruction metadata for the current tracked runs:

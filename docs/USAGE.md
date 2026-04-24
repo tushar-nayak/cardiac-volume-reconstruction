@@ -1,6 +1,6 @@
 # Usage Guide
 
-This repository is organized around a few runnable scripts in `src/`. The code is experimental, but there is a clear default path for getting started.
+This repository is organized around a few runnable scripts in `src/`, plus a clean package entrypoint at `cardiac_reconstruction/`. The code is experimental, but there is a clear default path for getting started.
 
 ## 1. Set up the environment
 
@@ -43,6 +43,20 @@ Path("/home/sofa/host_dir/cap-mitea/mitea")
 If your dataset lives elsewhere, change `CONFIG['data_path']` in `src/minimal_starter_5.py`.
 
 ## 3. Run the scripts
+
+### `python -m cardiac_reconstruction <command>`
+
+This is the preferred command surface for the reorganized repository.
+
+Available commands:
+
+- `inspect` - run the dataset checker
+- `baseline` - run the main reconstruction pipeline
+- `ablation` - run the ablation sweep
+- `sparse` - run sparse-view reconstruction
+- `viewer` - build the HTML comparison viewer
+- `complete` - run reconstruction plus viewer generation
+- `all` - run the full staged workflow
 
 ### `python src/data_inspector.py`
 

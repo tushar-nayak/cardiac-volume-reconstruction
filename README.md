@@ -1,11 +1,12 @@
 # Cardiac Volume Reconstruction
 
-End-to-end experiments for reconstructing 3D cardiac shape from sparse 2D views using implicit neural representations. The repository contains a working prototype pipeline, ablation runs, sparse-view reconstruction, and interactive 3D comparison viewers built around the MITEA dataset.
+End-to-end experiments for reconstructing 3D cardiac shape from sparse 2D views using implicit neural representations. The repository now has a clean public interface for the working prototype, while preserving the original research scripts and archived iterations for traceability.
 
 Start with:
 
 - [Setup](#setup)
 - [Recommended commands](#recommended-commands)
+- [Project structure](#project-structure)
 - [Dataset layout](#dataset-layout)
 - [Usage guide](docs/USAGE.md)
 - [Results index](results_index.md)
@@ -13,7 +14,8 @@ Start with:
 
 ## What’s here
 
-- `src/minimal_starter_5.py` is the main single-subject reconstruction pipeline and the shared utility module used by most other scripts.
+- `cardiac_reconstruction/` is the polished command surface. Use `python -m cardiac_reconstruction ...` for the canonical workflows.
+- `src/minimal_starter_5.py` remains the canonical prototype pipeline and shared utility module.
 - `src/run_all.py` runs the main stages sequentially.
 - `src/ablation_studies_7.py` runs a small, self-contained ablation sweep.
 - `src/sparse_reconstruction_2.py` performs sparse-view reconstruction and saves mesh/grid outputs.
@@ -21,6 +23,28 @@ Start with:
 - `src/viewer_3d_reconstruction_2.py` builds interactive HTML viewers for existing reconstructions.
 - `src/data_inspector.py` checks the dataset layout and prints scan statistics.
 - `old/` contains earlier iterations and implementation notes.
+
+## Project Structure
+
+```text
+cardiac_reconstruction/   Canonical package entrypoints and stable imports
+src/                      Working prototype scripts and experiment variants
+old/                      Archived iterations and development history
+docs/                     Usage notes
+report.md                 Final write-up with the reported results
+results_index.md          Tracked artifact index for the documented outputs
+index.html                Browser-friendly landing page for the tracked results
+```
+
+The new package layer gives you a clean way to run the project without changing the original scripts:
+
+```bash
+python -m cardiac_reconstruction inspect
+python -m cardiac_reconstruction baseline
+python -m cardiac_reconstruction sparse
+python -m cardiac_reconstruction viewer
+python -m cardiac_reconstruction all
+```
 
 ## Requirements
 
@@ -85,22 +109,22 @@ If your dataset lives elsewhere, update `CONFIG['data_path']` in `src/minimal_st
 1. Inspect the dataset before running anything else.
 
 ```bash
-python src/data_inspector.py
+python -m cardiac_reconstruction inspect
 ```
 
 2. Run the main reconstruction pipeline.
 
 ```bash
-python src/minimal_starter_5.py
+python -m cardiac_reconstruction baseline
 ```
 
 3. Run the full staged workflow.
 
 ```bash
-python src/run_all.py
+python -m cardiac_reconstruction all
 ```
 
-`src/run_all.py` will ask for confirmation and then run the staged experiments in sequence.
+The legacy `src/run_all.py` still works and will ask for confirmation before launching the staged experiments.
 
 ## Output directories
 
@@ -135,6 +159,7 @@ If GitHub Pages is enabled for this repo, the landing page is [index.html](index
 - Files with suffixes like `_fixed`, `_optimized`, `_multicore`, or `FINAL_*` are alternative experiment variants and not the canonical starting point.
 - The code is optimized for experimentation, not for a polished research release. Expect hard-coded paths and dataset assumptions in some scripts.
 - See [docs/USAGE.md](docs/USAGE.md) for a more complete script-by-script usage guide.
+- If you want a stable import path from Python, use `import cardiac_reconstruction`.
 
 ## Troubleshooting
 
