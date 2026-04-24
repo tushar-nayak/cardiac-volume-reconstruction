@@ -162,7 +162,7 @@ If your dataset lives elsewhere, update `CONFIG['data_path']` in `src/minimal_st
 
 ### Dataset Citation
 
-If you use MITEA in your own work, cite:
+The MITEA dataset used in this project should be cited as:
 
 Zhao D, Ferdian E, Maso Talou GD, Quill GM, Gilbert K, Wang VY, Babarenda Gamage TP, Pedrosa J, D'hooge J, Sutton TM, Lowe BS, Legget ME, Ruygrok PN, Doughty RN, Camara O, Young AA and Nash MP (2023) MITEA: A dataset for machine learning segmentation of the left ventricle in 3D echocardiography using subject-specific labels from cardiac magnetic resonance imaging. Front. Cardiovasc. Med. 9:1016703. doi: 10.3389/fcvm.2022.1016703
 
