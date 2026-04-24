@@ -3,12 +3,17 @@ Final project for `16825 Learning for 3D Vision`
 
 This repository contains the code, saved artifacts, and reproduction instructions for reconstructing 3D left-ventricle shape from sparse 2D echocardiographic slices using neural implicit representations.
 
+<p align="center">
+  <a href="https://tushar-nayak.github.io/cardiac-volume-reconstruction/" style="display:inline-block;padding:10px 16px;border:1px solid #111;border-radius:999px;text-decoration:none;color:#111;font-weight:600;">
+    Interactive Results
+  </a>
+</p>
+
 Start with:
 
 - [Setup](#setup)
 - [Recommended commands](#recommended-commands)
 - [Project structure](#project-structure)
-- [Interactive Results](https://tushar-nayak.github.io/cardiac-volume-reconstruction/)
 - [Dataset layout](#dataset-layout)
 - [Reproducibility](REPRODUCIBILITY.md)
 - [Usage guide](docs/USAGE.md)
