@@ -160,6 +160,12 @@ Path(__file__).resolve().parents[1] / "cap-mitea" / "mitea"
 
 If your dataset lives elsewhere, update `CONFIG['data_path']` in `src/minimal_starter_5.py`. Most other scripts import that same config.
 
+### Dataset Citation
+
+If you use MITEA in your own work, cite:
+
+Zhao D, Ferdian E, Maso Talou GD, Quill GM, Gilbert K, Wang VY, Babarenda Gamage TP, Pedrosa J, D'hooge J, Sutton TM, Lowe BS, Legget ME, Ruygrok PN, Doughty RN, Camara O, Young AA and Nash MP (2023) MITEA: A dataset for machine learning segmentation of the left ventricle in 3D echocardiography using subject-specific labels from cardiac magnetic resonance imaging. Front. Cardiovasc. Med. 9:1016703. doi: 10.3389/fcvm.2022.1016703
+
 ## Recommended commands
 
 1. Inspect the dataset before running anything else.
