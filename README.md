@@ -68,7 +68,7 @@ The saved test-split summaries report:
 
 The best full-volume overlap in the saved summaries is the mixed model without stratifiers, while the meta-learned initialization remains the strongest adapted stratified result.
 
-## What’s here
+## Whats here
 
 - `cardiac_reconstruction/` is the polished command surface. Use `python -m cardiac_reconstruction ...` for the canonical workflows.
 - `src/minimal_starter_5.py` remains the canonical prototype pipeline and shared utility module.
