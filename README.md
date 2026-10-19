@@ -1,7 +1,7 @@
 # Few-Shot 2D Echo to 3D Cardiac Reconstruction via Neural Implicit Priors
 Final project for `16825 Learning for 3D Vision`
 
-[![Current Work](https://shields.io)](https://github.com/tushar-nayak/heart-maker/)
+[![Current Work](https://img.shields.io/badge/Current_Work-heart--maker-blue?style=flat-square&logo=github)](https://github.com/tushar-nayak/heart-maker/)
 
 
 This repository contains the code, saved artifacts, and reproduction instructions for reconstructing 3D left-ventricle shape from sparse 2D echocardiographic slices using neural implicit representations.
